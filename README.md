@@ -1,7 +1,5 @@
-<h2>Desafio - API Rest</h2>
-
-<h5>Breve descrição:</h5>
-O projeto tem como objetivo principal facilitar a busca personalizada sobre notícias do dia, de acordo com etiquetas (assuntos) que podem ser cadastradas para cada usuário. <br>
+<h2>Newsletter</h2>
+O projeto tem como objetivo principal o envio de notícias do dia de forma personalizada, de acordo com etiquetas (assuntos) que são cadastradas pelo próprio usuário. A lista de notícias é enviada via e-mail. <br>
 
 <h5>Tecnologias utilizadas:</h5>
 - Java 17; <br>
@@ -27,8 +25,6 @@ O projeto tem como objetivo principal facilitar a busca personalizada sobre not�
 - Histórico de parâmetros (etiqueta e data) acessados no dia atual, que pode ser visualizado pelo próprio usuário que fez os acessos ou um perfil administrador que visualiza os acessos de todos os usuários; <br>
 - Histórico de etiquetas mais acessadas independente da data, que pode ser visualizado somente por perfil administrador; <br>
 - Banco de dados é populado no ato de criação das tabelas. <br>
-
-<h5>Exceed:</h5>
 - JWT para gerar token; <br>
 - Swagger para documentar os endpoints da API; <br>
 - Projeto no Postman para documentar os endpoints da API; <br>
