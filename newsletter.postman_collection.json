@@ -1,0 +1,1657 @@
+{
+	"info": {
+		"_postman_id": "1cc21bf7-966a-4847-89f2-5c9eb697e711",
+		"name": "newsletter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24173639"
+	},
+	"item": [
+		{
+			"name": "Autenticação",
+			"item": [
+				{
+					"name": "Gerar token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"thali@teste\",\r\n    \"senha\": \"oi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"thalia@teste\",\r\n    \"senha\": \"oi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/auth",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY5MzQyMzM4fQ.N1gFEiAMs9KnURX_ANDVIx5SCoiCp-HUOUf6ZPKVwIA\"\n}"
+						},
+						{
+							"name": "403 - E-mail errado/não informado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"thalia@teste\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/auth",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T00:36:08.879+00:00\",\n    \"message\": \"Autenticação não realizada. Por favor, revise o email e a senha informados.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						},
+						{
+							"name": "403 - Senha errada/não informada",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"senha\": \"oi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/auth",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T00:36:08.879+00:00\",\n    \"message\": \"Autenticação não realizada. Por favor, revise o email e a senha informados.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Vincular etiqueta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY5MTY0NzgxfQ.2KO8vI9KZMwX34CikHxBXcECTsmSmuCf7KBwvdo0YRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"etiqueta\": \"Filme\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/etiquetas/vincular",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"etiquetas",
+								"vincular"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"etiqueta\": \"Filme\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/v1/usuarios/etiquetas/vincular",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"v1",
+										"usuarios",
+										"etiquetas",
+										"vincular"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "Etiqueta vinculada ao usuário com sucesso!"
+						},
+						{
+							"name": "208 - Usuário já possui etiqueta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"etiqueta\": \"Filme\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/etiquetas/vincular",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"etiquetas",
+										"vincular"
+									]
+								}
+							},
+							"status": "Already Reported (WebDAV) (RFC 5842)",
+							"code": 208,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-24T23:35:40.985+00:00\",\n    \"message\": \"Etiqueta já é vinculada ao usuário.\",\n    \"status\": \"ALREADY_REPORTED\"\n}"
+						},
+						{
+							"name": "403 - Perfil com admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"etiqueta\": \"Filme\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/etiquetas/vincular",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"etiquetas",
+										"vincular"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-24T23:33:49.907+00:00\",\n    \"message\": \"Cadastro de etiquetas só pode ser realizado por perfil sem administrador.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						},
+						{
+							"name": "403 - Token inválido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"etiqueta\": \"Filme\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/etiquetas/vincular",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"etiquetas",
+										"vincular"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:16:14.614+00:00\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"message\": \"Access Denied\",\n    \"path\": \"/v1/usuarios/etiquetas/vincular\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Notícias antigas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0IiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY4ODAyNjQ0fQ.PV0U-pUnqURS8cjzHACI_vFbYo0w8HqipfF9RxKbEwM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/noticias/antigas/?q=futebol&date=11/11/2022",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"noticias",
+								"antigas",
+								""
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "futebol"
+								},
+								{
+									"key": "date",
+									"value": "11/11/2022"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/noticias/antigas/?q=tecnologia&date=11/11/2022",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"noticias",
+										"antigas",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "tecnologia"
+										},
+										{
+											"key": "date",
+											"value": "11/11/2022"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"count\": \"1\",\n    \"list\": [\n        {\n            \"title\": \"Análise: como explicar tantas demissões nas empresas de tecnologia?\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMif2h0dHBzOi8vd3d3LnVvbC5jb20uYnIvdGlsdC9ub3RpY2lhcy9yZWRhY2FvLzIwMjIvMTEvMTEvb3Bpbmlhby1jb21vLWV4cGxpY2FyLXRhbnRhcy1kZW1pc3NvZXMtbmFzLWdyYW5kZXMtZW1wcmVzYXMtZGUtdGVjaC5odG3SAYMBaHR0cHM6Ly93d3cudW9sLmNvbS5ici90aWx0L25vdGljaWFzL3JlZGFjYW8vMjAyMi8xMS8xMS9vcGluaWFvLWNvbW8tZXhwbGljYXItdGFudGFzLWRlbWlzc29lcy1uYXMtZ3JhbmRlcy1lbXByZXNhcy1kZS10ZWNoLmFtcC5odG0?oc=5\\\" target=\\\"_blank\\\">Análise: como explicar tantas demissões nas empresas de tecnologia?</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMif2h0dHBzOi8vd3d3LnVvbC5jb20uYnIvdGlsdC9ub3RpY2lhcy9yZWRhY2FvLzIwMjIvMTEvMTEvb3Bpbmlhby1jb21vLWV4cGxpY2FyLXRhbnRhcy1kZW1pc3NvZXMtbmFzLWdyYW5kZXMtZW1wcmVzYXMtZGUtdGVjaC5odG3SAYMBaHR0cHM6Ly93d3cudW9sLmNvbS5ici90aWx0L25vdGljaWFzL3JlZGFjYW8vMjAyMi8xMS8xMS9vcGluaWFvLWNvbW8tZXhwbGljYXItdGFudGFzLWRlbWlzc29lcy1uYXMtZ3JhbmRlcy1lbXByZXNhcy1kZS10ZWNoLmFtcC5odG0?oc=5\",\n            \"datetime\": \"11/11/2022 às 05:00:00\",\n            \"date\": \"11/11/2022\",\n            \"time\": \"05:00:00\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "403 - Perfil com admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/noticias/antigas/?q=futebol&date=11/11/2022",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"noticias",
+										"antigas",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "futebol"
+										},
+										{
+											"key": "date",
+											"value": "11/11/2022"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-24T23:45:26.870+00:00\",\n    \"message\": \"Consulta de notícias só pode ser realizada por perfil sem administrador.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						},
+						{
+							"name": "404 - Usuário sem etiqueta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/noticias/antigas/?q=futebol&date=11/11/2022",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"noticias",
+										"antigas",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "futebol"
+										},
+										{
+											"key": "date",
+											"value": "11/11/2022"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-24T23:39:16.350+00:00\",\n    \"message\": \"Etiqueta não encontrada no cadastro de etiquetas vinculadas ao usuário.\",\n    \"status\": \"NOT_FOUND\"\n}"
+						},
+						{
+							"name": "403 - Token inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/noticias/antigas/?q=tecnologia&date=11/11/2022",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"noticias",
+										"antigas",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "tecnologia"
+										},
+										{
+											"key": "date",
+											"value": "11/11/2022"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:20:44.966+00:00\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"message\": \"Access Denied\",\n    \"path\": \"/v1/usuarios/noticias/antigas/\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Notícias de hoje",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY4ODA1NTAxfQ.nuNpoMWVQnPHIjKRIfK24Iam_angYqVC-wbW2xSK_0M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/noticias/hoje/?q=Filme",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"noticias",
+								"hoje",
+								""
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Filme"
+								},
+								{
+									"key": "date",
+									"value": "11/11/2022",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/noticias/hoje/?q=Filme",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"noticias",
+										"hoje",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Filme"
+										},
+										{
+											"key": "date",
+											"value": "11/11/2022",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"count\": \"95\",\n    \"list\": [\n        {\n            \"title\": \"Debate Folha aborda transtorno alimentar em conversa sobre 'Êxtase', filme nacional\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMihgFodHRwczovL3d3dzEuZm9saGEudW9sLmNvbS5ici9jb3RpZGlhbm8vMjAyMi8xMS9kZWJhdGUtZm9saGEtYWJvcmRhLXRyYW5zdG9ybm8tYWxpbWVudGFyLWVtLWNvbnZlcnNhLXNvYnJlLWV4dGFzZS1maWxtZS1uYWNpb25hbC5zaHRtbNIBigFodHRwczovL3d3dzEuZm9saGEudW9sLmNvbS5ici9hbXAvY290aWRpYW5vLzIwMjIvMTEvZGViYXRlLWZvbGhhLWFib3JkYS10cmFuc3Rvcm5vLWFsaW1lbnRhci1lbS1jb252ZXJzYS1zb2JyZS1leHRhc2UtZmlsbWUtbmFjaW9uYWwuc2h0bWw?oc=5\\\" target=\\\"_blank\\\">Debate Folha aborda transtorno alimentar em conversa sobre 'Êxtase', filme nacional</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMihgFodHRwczovL3d3dzEuZm9saGEudW9sLmNvbS5ici9jb3RpZGlhbm8vMjAyMi8xMS9kZWJhdGUtZm9saGEtYWJvcmRhLXRyYW5zdG9ybm8tYWxpbWVudGFyLWVtLWNvbnZlcnNhLXNvYnJlLWV4dGFzZS1maWxtZS1uYWNpb25hbC5zaHRtbNIBigFodHRwczovL3d3dzEuZm9saGEudW9sLmNvbS5ici9hbXAvY290aWRpYW5vLzIwMjIvMTEvZGViYXRlLWZvbGhhLWFib3JkYS10cmFuc3Rvcm5vLWFsaW1lbnRhci1lbS1jb252ZXJzYS1zb2JyZS1leHRhc2UtZmlsbWUtbmFjaW9uYWwuc2h0bWw?oc=5\",\n            \"datetime\": \"24/11/2022 às 14:30:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"14:30:00\"\n        },\n        {\n            \"title\": \"Morte Morte Morte | Filme de terrir chega nas plataformas digitais\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiowFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZW50cmUtdGVsYXMvZmlsbWVzL21vcnRlLW1vcnRlLW1vcnRlLWZpbG1lLWRlLXRlcnJpci1jaGVnYS1uYXMtcGxhdGFmb3JtYXMtZGlnaXRhaXMsYzFhY2Y0ZGYzNGRjNDM3YzdlZTBjODRmNDdmNmIyNzdmNzZ5dXZlMS5odG1s0gEA?oc=5\\\" target=\\\"_blank\\\">Morte Morte Morte | Filme de terrir chega nas plataformas digitais</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiowFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZW50cmUtdGVsYXMvZmlsbWVzL21vcnRlLW1vcnRlLW1vcnRlLWZpbG1lLWRlLXRlcnJpci1jaGVnYS1uYXMtcGxhdGFmb3JtYXMtZGlnaXRhaXMsYzFhY2Y0ZGYzNGRjNDM3YzdlZTBjODRmNDdmNmIyNzdmNzZ5dXZlMS5odG1s0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 17:01:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"17:01:00\"\n        },\n        {\n            \"title\": \"A Vida Depois: veja sinopse, trailer e elenco do filme com Jenna Ortega\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiggFodHRwczovL3d3dy50ZWNodHVkby5jb20uYnIvbm90aWNpYXMvMjAyMi8xMS9hLXZpZGEtZGVwb2lzLXZlamEtc2lub3BzZS10cmFpbGVyLWUtZWxlbmNvLWRvLWZpbG1lLWNvbS1qZW5uYS1vcnRlZ2Etc3RyZWFtaW5nLmdodG1s0gGNAWh0dHBzOi8vd3d3LnRlY2h0dWRvLmNvbS5ici9nb29nbGUvYW1wL25vdGljaWFzLzIwMjIvMTEvYS12aWRhLWRlcG9pcy12ZWphLXNpbm9wc2UtdHJhaWxlci1lLWVsZW5jby1kby1maWxtZS1jb20tamVubmEtb3J0ZWdhLXN0cmVhbWluZy5naHRtbA?oc=5\\\" target=\\\"_blank\\\">A Vida Depois: veja sinopse, trailer e elenco do filme com Jenna Ortega</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiggFodHRwczovL3d3dy50ZWNodHVkby5jb20uYnIvbm90aWNpYXMvMjAyMi8xMS9hLXZpZGEtZGVwb2lzLXZlamEtc2lub3BzZS10cmFpbGVyLWUtZWxlbmNvLWRvLWZpbG1lLWNvbS1qZW5uYS1vcnRlZ2Etc3RyZWFtaW5nLmdodG1s0gGNAWh0dHBzOi8vd3d3LnRlY2h0dWRvLmNvbS5ici9nb29nbGUvYW1wL25vdGljaWFzLzIwMjIvMTEvYS12aWRhLWRlcG9pcy12ZWphLXNpbm9wc2UtdHJhaWxlci1lLWVsZW5jby1kby1maWxtZS1jb20tamVubmEtb3J0ZWdhLXN0cmVhbWluZy5naHRtbA?oc=5\",\n            \"datetime\": \"24/11/2022 às 15:07:26\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"15:07:26\"\n        },\n        {\n            \"title\": \"“Goncharov”: conheça “o filme perdido de Martin Scorsese”\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMib2h0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzExLzIzL2NpbmVtYS1lLXN0cmVhbWluZy9nb25jaGFyb3YtY29uaGVjYS1vLWZpbG1lLXBlcmRpZG8tZGUtbWFydGluLXNjb3JzZXNlL9IBAA?oc=5\\\" target=\\\"_blank\\\">“Goncharov”: conheça “o filme perdido de Martin Scorsese”</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMib2h0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzExLzIzL2NpbmVtYS1lLXN0cmVhbWluZy9nb25jaGFyb3YtY29uaGVjYS1vLWZpbG1lLXBlcmRpZG8tZGUtbWFydGluLXNjb3JzZXNlL9IBAA?oc=5\",\n            \"datetime\": \"23/11/2022 às 15:46:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"15:46:00\"\n        },\n        {\n            \"title\": \"Amazon planeja investir US$ 1 bilhão por ano em filmes para o cinema\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMifmh0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzExLzI0L2NpbmVtYS1lLXN0cmVhbWluZy9hbWF6b24tcGxhbmVqYS1pbnZlc3Rpci11cy0xLWJpbGhhby1wb3ItYW5vLWVtLWZpbG1lcy1wYXJhLW8tY2luZW1hL9IBAA?oc=5\\\" target=\\\"_blank\\\">Amazon planeja investir US$ 1 bilhão por ano em filmes para o cinema</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMifmh0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzExLzI0L2NpbmVtYS1lLXN0cmVhbWluZy9hbWF6b24tcGxhbmVqYS1pbnZlc3Rpci11cy0xLWJpbGhhby1wb3ItYW5vLWVtLWZpbG1lcy1wYXJhLW8tY2luZW1hL9IBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 13:46:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"13:46:00\"\n        },\n        {\n            \"title\": \"Cinecom exibe o filme Marte Um neste domingo (27)\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiX2h0dHBzOi8vd3d3LmZvbGhhZGFtYXRhLmNvbS5ici9jdWx0dXJhL25vdGljaWFzL2NpbmVjb20tZXhpYmUtby1maWxtZS1tYXJ0ZS11bS1uZXN0ZS1kb21pbmdvLTI30gEA?oc=5\\\" target=\\\"_blank\\\">Cinecom exibe o filme Marte Um neste domingo (27)</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiX2h0dHBzOi8vd3d3LmZvbGhhZGFtYXRhLmNvbS5ici9jdWx0dXJhL25vdGljaWFzL2NpbmVjb20tZXhpYmUtby1maWxtZS1tYXJ0ZS11bS1uZXN0ZS1kb21pbmdvLTI30gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 15:48:19\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"15:48:19\"\n        },\n        {\n            \"title\": \"'Paloma' é filme sobre 'diferença, amor e ódio, mas principalmente, afeto'\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiogFodHRwczovL2dhdWNoYXpoLmNsaWNyYnMuY29tLmJyL2N1bHR1cmEtZS1sYXplci9ub3RpY2lhLzIwMjIvMTEvcGFsb21hLWUtZmlsbWUtc29icmUtZGlmZXJlbmNhLWFtb3ItZS1vZGlvLW1hcy1wcmluY2lwYWxtZW50ZS1hZmV0by1jbGF1Mm9kcGwwMGFmMDFnMnBreGo4OXU4Lmh0bWzSAQA?oc=5\\\" target=\\\"_blank\\\">'Paloma' é filme sobre 'diferença, amor e ódio, mas principalmente, afeto'</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiogFodHRwczovL2dhdWNoYXpoLmNsaWNyYnMuY29tLmJyL2N1bHR1cmEtZS1sYXplci9ub3RpY2lhLzIwMjIvMTEvcGFsb21hLWUtZmlsbWUtc29icmUtZGlmZXJlbmNhLWFtb3ItZS1vZGlvLW1hcy1wcmluY2lwYWxtZW50ZS1hZmV0by1jbGF1Mm9kcGwwMGFmMDFnMnBreGo4OXU4Lmh0bWzSAQA?oc=5\",\n            \"datetime\": \"23/11/2022 às 17:02:32\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"17:02:32\"\n        },\n        {\n            \"title\": \"A Mulher Rei | Filme com Viola Davis estreia nas plataformas digitais\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMipgFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZW50cmUtdGVsYXMvZmlsbWVzL2EtbXVsaGVyLXJlaS1maWxtZS1jb20tdmlvbGEtZGF2aXMtZXN0cmVpYS1uYXMtcGxhdGFmb3JtYXMtZGlnaXRhaXMsZGVmZGQ3NDNiMjJjNDZkNDZlOGU1Njk5OGJjMDUxNWJhcXIwejVteS5odG1s0gEA?oc=5\\\" target=\\\"_blank\\\">A Mulher Rei | Filme com Viola Davis estreia nas plataformas digitais</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMipgFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZW50cmUtdGVsYXMvZmlsbWVzL2EtbXVsaGVyLXJlaS1maWxtZS1jb20tdmlvbGEtZGF2aXMtZXN0cmVpYS1uYXMtcGxhdGFmb3JtYXMtZGlnaXRhaXMsZGVmZGQ3NDNiMjJjNDZkNDZlOGU1Njk5OGJjMDUxNWJhcXIwejVteS5odG1s0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 19:01:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"19:01:00\"\n        },\n        {\n            \"title\": \"Netflix e Marvel Studios abrem temporada 2022 de filmes de Natal\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMifGh0dHBzOi8vd3d3LnVvbC5jb20uYnIvc3BsYXNoL25vdGljaWFzLzIwMjIvMTEvMjQvZGUtbWlsYWdyZS1uYS1ydWEtMzQtYS1kdXJvLWRlLW1hdGFyLWZpbG1lcy1pbmVzcXVlY2l2ZWlzLXBhcmEtby1uYXRhbC5odG3SAQA?oc=5\\\" target=\\\"_blank\\\">Netflix e Marvel Studios abrem temporada 2022 de filmes de Natal</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMifGh0dHBzOi8vd3d3LnVvbC5jb20uYnIvc3BsYXNoL25vdGljaWFzLzIwMjIvMTEvMjQvZGUtbWlsYWdyZS1uYS1ydWEtMzQtYS1kdXJvLWRlLW1hdGFyLWZpbG1lcy1pbmVzcXVlY2l2ZWlzLXBhcmEtby1uYXRhbC5odG3SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 13:27:46\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"13:27:46\"\n        },\n        {\n            \"title\": \"Mostra Internacional de Cinema Virtual chega a 3ª edição com filmes inéditos no país | Governo do Estado de São Paulo\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMif2h0dHBzOi8vd3d3LnNhb3BhdWxvLnNwLmdvdi5ici9zcG5vdGljaWFzL21vc3RyYS1pbnRlcm5hY2lvbmFsLWRlLWNpbmVtYS12aXJ0dWFsLWNoZWdhLWEtM2EtZWRpY2FvLWNvbS1maWxtZXMtaW5lZGl0b3Mtbm8tcGFpcy_SAQA?oc=5\\\" target=\\\"_blank\\\">Mostra Internacional de Cinema Virtual chega a 3ª edição com filmes inéditos no país | Governo do Estado de São Paulo</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMif2h0dHBzOi8vd3d3LnNhb3BhdWxvLnNwLmdvdi5ici9zcG5vdGljaWFzL21vc3RyYS1pbnRlcm5hY2lvbmFsLWRlLWNpbmVtYS12aXJ0dWFsLWNoZWdhLWEtM2EtZWRpY2FvLWNvbS1maWxtZXMtaW5lZGl0b3Mtbm8tcGFpcy_SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 10:18:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"10:18:00\"\n        },\n        {\n            \"title\": \"Este filme de terror custou pouco dinheiro, mas se tornou um verdadeiro fenômeno e um dos mais lucrativos da história\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzOTY3L9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzk2Ny8?oc=5\\\" target=\\\"_blank\\\">Este filme de terror custou pouco dinheiro, mas se tornou um verdadeiro fenômeno e um dos mais lucrativos da história</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzOTY3L9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzk2Ny8?oc=5\",\n            \"datetime\": \"24/11/2022 às 12:56:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"12:56:00\"\n        },\n        {\n            \"title\": \"Razão e sensualidade se unem em ‘Mali Twist’, novo filme de Robert Guédiguian\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMidWh0dHBzOi8vd3d3LmVzdGFkYW8uY29tLmJyL2N1bHR1cmEvY2luZW1hL3JhemFvLWUtc2Vuc3VhbGlkYWRlLXNlLXVuZW0tZW0tbWFsaS10d2lzdC1ub3ZvLWZpbG1lLWRlLXJvYmVydC1ndWVkaWd1aWFuL9IBeWh0dHBzOi8vd3d3LmVzdGFkYW8uY29tLmJyL2FtcC9jdWx0dXJhL2NpbmVtYS9yYXphby1lLXNlbnN1YWxpZGFkZS1zZS11bmVtLWVtLW1hbGktdHdpc3Qtbm92by1maWxtZS1kZS1yb2JlcnQtZ3VlZGlndWlhbi8?oc=5\\\" target=\\\"_blank\\\">Razão e sensualidade se unem em ‘Mali Twist’, novo filme de Robert Guédiguian</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMidWh0dHBzOi8vd3d3LmVzdGFkYW8uY29tLmJyL2N1bHR1cmEvY2luZW1hL3JhemFvLWUtc2Vuc3VhbGlkYWRlLXNlLXVuZW0tZW0tbWFsaS10d2lzdC1ub3ZvLWZpbG1lLWRlLXJvYmVydC1ndWVkaWd1aWFuL9IBeWh0dHBzOi8vd3d3LmVzdGFkYW8uY29tLmJyL2FtcC9jdWx0dXJhL2NpbmVtYS9yYXphby1lLXNlbnN1YWxpZGFkZS1zZS11bmVtLWVtLW1hbGktdHdpc3Qtbm92by1maWxtZS1kZS1yb2JlcnQtZ3VlZGlndWlhbi8?oc=5\",\n            \"datetime\": \"24/11/2022 às 10:00:02\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"10:00:02\"\n        },\n        {\n            \"title\": \"CineB exibe o filme “Ainbo, a guerreira da Amazônia” no Jd. Celeste||CineB exibe o filme “Ainbo, a guerreira da Amazônia” no Jd. Celeste\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiYGh0dHBzOi8vc3BiYW5jYXJpb3MuY29tLmJyLzExLzIwMjIvY2luZWItZXhpYmUtby1maWxtZS1haW5iby1ndWVycmVpcmEtZGEtYW1hem9uaWEtbm8tamQtY2VsZXN0ZdIBAA?oc=5\\\" target=\\\"_blank\\\">CineB exibe o filme “Ainbo, a guerreira da Amazônia” no Jd. Celeste||CineB exibe o filme “Ainbo, a guerreira da Amazônia” no Jd. Celeste</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiYGh0dHBzOi8vc3BiYW5jYXJpb3MuY29tLmJyLzExLzIwMjIvY2luZWItZXhpYmUtby1maWxtZS1haW5iby1ndWVycmVpcmEtZGEtYW1hem9uaWEtbm8tamQtY2VsZXN0ZdIBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 14:10:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"14:10:00\"\n        },\n        {\n            \"title\": \"Plano de Aula: Explicamos o final do filme da Netflix\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiY2h0dHBzOi8vb2JzZXJ2YXRvcmlvZG9jaW5lbWEudW9sLmNvbS5ici9maWxtZXMvcGxhbm8tZGUtYXVsYS1leHBsaWNhbW9zLW8tZmluYWwtZG8tZmlsbWUtZGEtbmV0ZmxpeNIBAA?oc=5\\\" target=\\\"_blank\\\">Plano de Aula: Explicamos o final do filme da Netflix</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiY2h0dHBzOi8vb2JzZXJ2YXRvcmlvZG9jaW5lbWEudW9sLmNvbS5ici9maWxtZXMvcGxhbm8tZGUtYXVsYS1leHBsaWNhbW9zLW8tZmluYWwtZG8tZmlsbWUtZGEtbmV0ZmxpeNIBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 16:00:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"16:00:00\"\n        },\n        {\n            \"title\": \"'300': Entenda o filme que general mandou Moraes assistir em tom golpista\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMifGh0dHBzOi8vd3d3LnVvbC5jb20uYnIvc3BsYXNoL25vdGljaWFzLzIwMjIvMTEvMjQvMzAwLWVudGVuZGEtby1maWxtZS1xdWUtZ2VuZXJhbC1tYW5kb3UtbW9yYWVzLWFzc2lzdGlyLWVtLXRvbS1nb2xwaXN0YS5odG3SAQA?oc=5\\\" target=\\\"_blank\\\">'300': Entenda o filme que general mandou Moraes assistir em tom golpista</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMifGh0dHBzOi8vd3d3LnVvbC5jb20uYnIvc3BsYXNoL25vdGljaWFzLzIwMjIvMTEvMjQvMzAwLWVudGVuZGEtby1maWxtZS1xdWUtZ2VuZXJhbC1tYW5kb3UtbW9yYWVzLWFzc2lzdGlyLWVtLXRvbS1nb2xwaXN0YS5odG3SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 15:37:32\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"15:37:32\"\n        },\n        {\n            \"title\": \"Entre Mulheres | Filme cotado para o Oscar 2023 ganha trailer emocionante\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiqgFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZW50cmUtdGVsYXMvZmlsbWVzL2VudHJlLW11bGhlcmVzLWZpbG1lLWNvdGFkby1wYXJhLW8tb3NjYXItMjAyMy1nYW5oYS10cmFpbGVyLWVtb2Npb25hbnRlLDEyZjk3ZjVlMDE2NWM2Y2MzM2Y1MjQxYzgyZjJjOTU2bXUzZW91N3UuaHRtbNIBAA?oc=5\\\" target=\\\"_blank\\\">Entre Mulheres | Filme cotado para o Oscar 2023 ganha trailer emocionante</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiqgFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZW50cmUtdGVsYXMvZmlsbWVzL2VudHJlLW11bGhlcmVzLWZpbG1lLWNvdGFkby1wYXJhLW8tb3NjYXItMjAyMy1nYW5oYS10cmFpbGVyLWVtb2Npb25hbnRlLDEyZjk3ZjVlMDE2NWM2Y2MzM2Y1MjQxYzgyZjJjOTU2bXUzZW91N3UuaHRtbNIBAA?oc=5\",\n            \"datetime\": \"23/11/2022 às 19:01:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"19:01:00\"\n        },\n        {\n            \"title\": \"Novo filme de Guy Ritchie ganha data de estreia\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMinwFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZW50cmUtdGVsYXMvY29sdW5pc3Rhcy92aWMtdmlldy9ub3ZvLWZpbG1lLWRlLWd1eS1yaXRjaGllLWdhbmhhLWRhdGEtZGUtZXN0cmVpYSw3ZjdmNzE3ZmMyNTg0YWI5Mjk4ZWM5NTU2ZTFjYmEyNjFnbzl2ZHdhLmh0bWzSAQA?oc=5\\\" target=\\\"_blank\\\">Novo filme de Guy Ritchie ganha data de estreia</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMinwFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZW50cmUtdGVsYXMvY29sdW5pc3Rhcy92aWMtdmlldy9ub3ZvLWZpbG1lLWRlLWd1eS1yaXRjaGllLWdhbmhhLWRhdGEtZGUtZXN0cmVpYSw3ZjdmNzE3ZmMyNTg0YWI5Mjk4ZWM5NTU2ZTFjYmEyNjFnbzl2ZHdhLmh0bWzSAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 12:02:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"12:02:00\"\n        },\n        {\n            \"title\": \"Pinóquio: clássico ganha filme dirigido por Guillermo Del Toro na Netflix\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMihQFodHRwczovL3d3dy50ZWNodHVkby5jb20uYnIvbm90aWNpYXMvMjAyMi8xMS9waW5vcXVpby1jbGFzc2ljby1nYW5oYS1maWxtZS1kaXJpZ2lkby1wb3ItZ3VpbGxlcm1vLWRlbC10b3JvLW5hLW5ldGZsaXgtc3RyZWFtaW5nLmdodG1s0gGQAWh0dHBzOi8vd3d3LnRlY2h0dWRvLmNvbS5ici9nb29nbGUvYW1wL25vdGljaWFzLzIwMjIvMTEvcGlub3F1aW8tY2xhc3NpY28tZ2FuaGEtZmlsbWUtZGlyaWdpZG8tcG9yLWd1aWxsZXJtby1kZWwtdG9yby1uYS1uZXRmbGl4LXN0cmVhbWluZy5naHRtbA?oc=5\\\" target=\\\"_blank\\\">Pinóquio: clássico ganha filme dirigido por Guillermo Del Toro na Netflix</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMihQFodHRwczovL3d3dy50ZWNodHVkby5jb20uYnIvbm90aWNpYXMvMjAyMi8xMS9waW5vcXVpby1jbGFzc2ljby1nYW5oYS1maWxtZS1kaXJpZ2lkby1wb3ItZ3VpbGxlcm1vLWRlbC10b3JvLW5hLW5ldGZsaXgtc3RyZWFtaW5nLmdodG1s0gGQAWh0dHBzOi8vd3d3LnRlY2h0dWRvLmNvbS5ici9nb29nbGUvYW1wL25vdGljaWFzLzIwMjIvMTEvcGlub3F1aW8tY2xhc3NpY28tZ2FuaGEtZmlsbWUtZGlyaWdpZG8tcG9yLWd1aWxsZXJtby1kZWwtdG9yby1uYS1uZXRmbGl4LXN0cmVhbWluZy5naHRtbA?oc=5\",\n            \"datetime\": \"24/11/2022 às 01:01:11\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"01:01:11\"\n        },\n        {\n            \"title\": \"Diretor e heroína retratada no filme Pureza participam de debate e cine sessão no TRT-6\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMigQFodHRwczovL3d3dy50cnQ2Lmp1cy5ici9wb3J0YWwvbm90aWNpYXMvMjAyMi8xMS8yMy9kaXJldG9yLWUtaGVyb2luYS1yZXRyYXRhZGEtbm8tZmlsbWUtcHVyZXphLXBhcnRpY2lwYW0tZGUtZGViYXRlLWUtY2luZS1zZXNzYW_SAQA?oc=5\\\" target=\\\"_blank\\\">Diretor e heroína retratada no filme Pureza participam de debate e cine sessão no TRT-6</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMigQFodHRwczovL3d3dy50cnQ2Lmp1cy5ici9wb3J0YWwvbm90aWNpYXMvMjAyMi8xMS8yMy9kaXJldG9yLWUtaGVyb2luYS1yZXRyYXRhZGEtbm8tZmlsbWUtcHVyZXphLXBhcnRpY2lwYW0tZGUtZGViYXRlLWUtY2luZS1zZXNzYW_SAQA?oc=5\",\n            \"datetime\": \"23/11/2022 às 15:35:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"15:35:00\"\n        },\n        {\n            \"title\": \"\\\"Bardo\\\", novo filme de premiado diretor mexicano, estreia no Cine Metrópolis\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiZWh0dHBzOi8vd3d3LnVmZXMuYnIvY29udGV1ZG8vYmFyZG8tbm92by1maWxtZS1kZS1wcmVtaWFkby1kaXJldG9yLW1leGljYW5vLWVzdHJlaWEtbm8tY2luZS1tZXRyb3BvbGlz0gEA?oc=5\\\" target=\\\"_blank\\\">\\\"Bardo\\\", novo filme de premiado diretor mexicano, estreia no Cine Metrópolis</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiZWh0dHBzOi8vd3d3LnVmZXMuYnIvY29udGV1ZG8vYmFyZG8tbm92by1maWxtZS1kZS1wcmVtaWFkby1kaXJldG9yLW1leGljYW5vLWVzdHJlaWEtbm8tY2luZS1tZXRyb3BvbGlz0gEA?oc=5\",\n            \"datetime\": \"17/11/2022 às 19:36:00\",\n            \"date\": \"17/11/2022\",\n            \"time\": \"19:36:00\"\n        },\n        {\n            \"title\": \"Margot Robbie revela atitude ousada para entrar em filme de Tarantino\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMicWh0dHBzOi8vdmVqYS5hYnJpbC5jb20uYnIvY29sdW5hL2VtLWNhcnRhei9tYXJnb3Qtcm9iYmllLXJldmVsYS1hdGl0dWRlLW91c2FkYS1wYXJhLWVudHJhci1lbS1maWxtZS1kZS10YXJhbnRpbm8v0gF1aHR0cHM6Ly92ZWphLmFicmlsLmNvbS5ici9jb2x1bmEvZW0tY2FydGF6L21hcmdvdC1yb2JiaWUtcmV2ZWxhLWF0aXR1ZGUtb3VzYWRhLXBhcmEtZW50cmFyLWVtLWZpbG1lLWRlLXRhcmFudGluby9hbXAv?oc=5\\\" target=\\\"_blank\\\">Margot Robbie revela atitude ousada para entrar em filme de Tarantino</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMicWh0dHBzOi8vdmVqYS5hYnJpbC5jb20uYnIvY29sdW5hL2VtLWNhcnRhei9tYXJnb3Qtcm9iYmllLXJldmVsYS1hdGl0dWRlLW91c2FkYS1wYXJhLWVudHJhci1lbS1maWxtZS1kZS10YXJhbnRpbm8v0gF1aHR0cHM6Ly92ZWphLmFicmlsLmNvbS5ici9jb2x1bmEvZW0tY2FydGF6L21hcmdvdC1yb2JiaWUtcmV2ZWxhLWF0aXR1ZGUtb3VzYWRhLXBhcmEtZW50cmFyLWVtLWZpbG1lLWRlLXRhcmFudGluby9hbXAv?oc=5\",\n            \"datetime\": \"24/11/2022 às 10:20:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"10:20:00\"\n        },\n        {\n            \"title\": \"Machine Kelly lança faixa-título de seu novo filme “Taurus”\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiYmh0dHBzOi8vd3d3LnJhZGlvcm9jay5jb20uYnIvMjAyMi8xMS8yNC9tYWNoaW5lLWtlbGx5LWxhbmNhLWZhaXhhLXRpdHVsby1kZS1zZXUtbm92by1maWxtZS10YXVydXMv0gEA?oc=5\\\" target=\\\"_blank\\\">Machine Kelly lança faixa-título de seu novo filme “Taurus”</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiYmh0dHBzOi8vd3d3LnJhZGlvcm9jay5jb20uYnIvMjAyMi8xMS8yNC9tYWNoaW5lLWtlbGx5LWxhbmNhLWZhaXhhLXRpdHVsby1kZS1zZXUtbm92by1maWxtZS10YXVydXMv0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 08:41:03\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"08:41:03\"\n        },\n        {\n            \"title\": \"Pantera Negra 2 | Ryan Coogler agradece fãs por sucesso do filme\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiZmh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL21hcnZlbC1jaW5lbWEvcGFudGVyYS1uZWdyYS0yLXdha2FuZGEtcGFyYS1zZW1wcmUtcnlhbi1jb29nbGVyLWFncmFkZWNlLWZhc9IBAA?oc=5\\\" target=\\\"_blank\\\">Pantera Negra 2 | Ryan Coogler agradece fãs por sucesso do filme</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiZmh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL21hcnZlbC1jaW5lbWEvcGFudGVyYS1uZWdyYS0yLXdha2FuZGEtcGFyYS1zZW1wcmUtcnlhbi1jb29nbGVyLWFncmFkZWNlLWZhc9IBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 12:52:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"12:52:00\"\n        },\n        {\n            \"title\": \"O Milagre: Filme da Netflix é baseado em fatos reais?\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzODQ2L9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzg0Ni8?oc=5\\\" target=\\\"_blank\\\">O Milagre: Filme da Netflix é baseado em fatos reais?</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzODQ2L9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzg0Ni8?oc=5\",\n            \"datetime\": \"23/11/2022 às 14:05:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"14:05:00\"\n        },\n        {\n            \"title\": \"Brasil na Copa: filmes e séries sobre a Seleção para fazer o aquecimento\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiggFodHRwczovL29saGFyZGlnaXRhbC5jb20uYnIvMjAyMi8xMS8yNC9jaW5lbWEtZS1zdHJlYW1pbmcvYnJhc2lsLW5hLWNvcGEtZmlsbWVzLWUtc2VyaWVzLXNvYnJlLWEtc2VsZWNhby1wYXJhLWZhemVyLW8tYXF1ZWNpbWVudG8v0gEA?oc=5\\\" target=\\\"_blank\\\">Brasil na Copa: filmes e séries sobre a Seleção para fazer o aquecimento</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiggFodHRwczovL29saGFyZGlnaXRhbC5jb20uYnIvMjAyMi8xMS8yNC9jaW5lbWEtZS1zdHJlYW1pbmcvYnJhc2lsLW5hLWNvcGEtZmlsbWVzLWUtc2VyaWVzLXNvYnJlLWEtc2VsZWNhby1wYXJhLWZhemVyLW8tYXF1ZWNpbWVudG8v0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 12:09:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"12:09:00\"\n        },\n        {\n            \"title\": \"Johnny Depp deve voltar a viver Jack Sparrow em novo filme da franquia \\\"Piratas do Caribe\\\"\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMijQFodHRwczovL3d3dy5jb3JyZWlvZG9wb3ZvLmNvbS5ici9hcnRlYWdlbmRhL2pvaG5ueS1kZXBwLWRldmUtdm9sdGFyLWEtdml2ZXItamFjay1zcGFycm93LWVtLW5vdm8tZmlsbWUtZGEtZnJhbnF1aWEtcGlyYXRhcy1kby1jYXJpYmUtMS45Mjc4MTHSAQA?oc=5\\\" target=\\\"_blank\\\">Johnny Depp deve voltar a viver Jack Sparrow em novo filme da franquia \\\"Piratas do Caribe\\\"</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMijQFodHRwczovL3d3dy5jb3JyZWlvZG9wb3ZvLmNvbS5ici9hcnRlYWdlbmRhL2pvaG5ueS1kZXBwLWRldmUtdm9sdGFyLWEtdml2ZXItamFjay1zcGFycm93LWVtLW5vdm8tZmlsbWUtZGEtZnJhbnF1aWEtcGlyYXRhcy1kby1jYXJpYmUtMS45Mjc4MTHSAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 10:31:54\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"10:31:54\"\n        },\n        {\n            \"title\": \"11 executivos indicam os filmes que marcaram suas vidas e carreiras\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiX2h0dHBzOi8vd3d3Lm11bmRvcmguY29tLmJyLzExLWV4ZWN1dGl2b3MtaW5kaWNhbS1vcy1maWxtZXMtcXVlLW1hcmNhcmFtLXN1YXMtdmlkYXMtZS1jYXJyZWlyYXMv0gFfaHR0cHM6Ly93d3cubXVuZG9yaC5jb20uYnIvMTEtZXhlY3V0aXZvcy1pbmRpY2FtLW9zLWZpbG1lcy1xdWUtbWFyY2FyYW0tc3Vhcy12aWRhcy1lLWNhcnJlaXJhcy8?oc=5\\\" target=\\\"_blank\\\">11 executivos indicam os filmes que marcaram suas vidas e carreiras</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiX2h0dHBzOi8vd3d3Lm11bmRvcmguY29tLmJyLzExLWV4ZWN1dGl2b3MtaW5kaWNhbS1vcy1maWxtZXMtcXVlLW1hcmNhcmFtLXN1YXMtdmlkYXMtZS1jYXJyZWlyYXMv0gFfaHR0cHM6Ly93d3cubXVuZG9yaC5jb20uYnIvMTEtZXhlY3V0aXZvcy1pbmRpY2FtLW9zLWZpbG1lcy1xdWUtbWFyY2FyYW0tc3Vhcy12aWRhcy1lLWNhcnJlaXJhcy8?oc=5\",\n            \"datetime\": \"24/11/2022 às 14:43:46\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"14:43:46\"\n        },\n        {\n            \"title\": \"10 filmes pouco conhecidos, mas que valem a pena assistir online\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMifGh0dHBzOi8vd3d3LnRlY2h0dWRvLmNvbS5ici9ub3RpY2lhcy8yMDIyLzExLzEwLWZpbG1lcy1wb3Vjby1jb25oZWNpZG9zLW1hcy1xdWUtdmFsZW0tYS1wZW5hLWFzc2lzdGlyLW9ubGluZS1zdHJlYW1pbmcuZ2h0bWzSAYcBaHR0cHM6Ly93d3cudGVjaHR1ZG8uY29tLmJyL2dvb2dsZS9hbXAvbm90aWNpYXMvMjAyMi8xMS8xMC1maWxtZXMtcG91Y28tY29uaGVjaWRvcy1tYXMtcXVlLXZhbGVtLWEtcGVuYS1hc3Npc3Rpci1vbmxpbmUtc3RyZWFtaW5nLmdodG1s?oc=5\\\" target=\\\"_blank\\\">10 filmes pouco conhecidos, mas que valem a pena assistir online</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMifGh0dHBzOi8vd3d3LnRlY2h0dWRvLmNvbS5ici9ub3RpY2lhcy8yMDIyLzExLzEwLWZpbG1lcy1wb3Vjby1jb25oZWNpZG9zLW1hcy1xdWUtdmFsZW0tYS1wZW5hLWFzc2lzdGlyLW9ubGluZS1zdHJlYW1pbmcuZ2h0bWzSAYcBaHR0cHM6Ly93d3cudGVjaHR1ZG8uY29tLmJyL2dvb2dsZS9hbXAvbm90aWNpYXMvMjAyMi8xMS8xMC1maWxtZXMtcG91Y28tY29uaGVjaWRvcy1tYXMtcXVlLXZhbGVtLWEtcGVuYS1hc3Npc3Rpci1vbmxpbmUtc3RyZWFtaW5nLmdodG1s?oc=5\",\n            \"datetime\": \"20/11/2022 às 02:01:08\",\n            \"date\": \"20/11/2022\",\n            \"time\": \"02:01:08\"\n        },\n        {\n            \"title\": \"Filme com Giulia Be está há um mês no top 10 da Netflix. Saiba tudo!\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMibWh0dHBzOi8vd3d3Lm9mdXhpY28uY29tLmJyL2NpbmVtYS1lLXNlcmllL2ZpbG1lLWNvbS1naXVsaWEtYmUtZXN0YS1oYS11bS1tZXMtbm8tdG9wLTEwLWRhLW5ldGZsaXgtc2FpYmEtdHVkby_SAQA?oc=5\\\" target=\\\"_blank\\\">Filme com Giulia Be está há um mês no top 10 da Netflix. Saiba tudo!</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMibWh0dHBzOi8vd3d3Lm9mdXhpY28uY29tLmJyL2NpbmVtYS1lLXNlcmllL2ZpbG1lLWNvbS1naXVsaWEtYmUtZXN0YS1oYS11bS1tZXMtbm8tdG9wLTEwLWRhLW5ldGZsaXgtc2FpYmEtdHVkby_SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 16:30:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"16:30:00\"\n        },\n        {\n            \"title\": \"Filme sobre luta de escravos pela liberdade na Serra será exibido na TV aberta\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMicmh0dHBzOi8vd3d3LnBvcnRhbHRlbXBvbm92by5jb20uYnIvZmlsbWUtc29icmUtbHV0YS1kZS1lc2NyYXZvcy1wZWxhLWxpYmVyZGFkZS1uYS1zZXJyYS1zZXJhLWV4aWJpZG8tbmEtdHYtYWJlcnRhL9IBAA?oc=5\\\" target=\\\"_blank\\\">Filme sobre luta de escravos pela liberdade na Serra será exibido na TV aberta</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMicmh0dHBzOi8vd3d3LnBvcnRhbHRlbXBvbm92by5jb20uYnIvZmlsbWUtc29icmUtbHV0YS1kZS1lc2NyYXZvcy1wZWxhLWxpYmVyZGFkZS1uYS1zZXJyYS1zZXJhLWV4aWJpZG8tbmEtdHYtYWJlcnRhL9IBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 14:09:24\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"14:09:24\"\n        },\n        {\n            \"title\": \"“Avatar 2”: James Cameron diz que o filme foi “caro para caralho, pior negócio da história do cinema”\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vZ2l6bW9kby51b2wuY29tLmJyL2F2YXRhci0yLWphbWVzLWNhbWVyb24tZGl6LXF1ZS1vLWZpbG1lLWZvaS1jYXJvLXBhcmEtY2FyYWxoby1waW9yLW5lZ29jaW8tZGEtaGlzdG9yaWEtZG8tY2luZW1hL9IBe2h0dHBzOi8vZ2l6bW9kby51b2wuY29tLmJyL2F2YXRhci0yLWphbWVzLWNhbWVyb24tZGl6LXF1ZS1vLWZpbG1lLWZvaS1jYXJvLXBhcmEtY2FyYWxoby1waW9yLW5lZ29jaW8tZGEtaGlzdG9yaWEtZG8tY2luZW1hLw?oc=5\\\" target=\\\"_blank\\\">“Avatar 2”: James Cameron diz que o filme foi “caro para caralho, pior negócio da história do cinema”</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vZ2l6bW9kby51b2wuY29tLmJyL2F2YXRhci0yLWphbWVzLWNhbWVyb24tZGl6LXF1ZS1vLWZpbG1lLWZvaS1jYXJvLXBhcmEtY2FyYWxoby1waW9yLW5lZ29jaW8tZGEtaGlzdG9yaWEtZG8tY2luZW1hL9IBe2h0dHBzOi8vZ2l6bW9kby51b2wuY29tLmJyL2F2YXRhci0yLWphbWVzLWNhbWVyb24tZGl6LXF1ZS1vLWZpbG1lLWZvaS1jYXJvLXBhcmEtY2FyYWxoby1waW9yLW5lZ29jaW8tZGEtaGlzdG9yaWEtZG8tY2luZW1hLw?oc=5\",\n            \"datetime\": \"23/11/2022 às 12:04:07\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"12:04:07\"\n        },\n        {\n            \"title\": \"Ação e bom humor transformam \\\"Força Bruta\\\" em um bom filme | #CineBuzzIndica\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMipAFodHRwczovL2NpbmVidXp6LnVvbC5jb20uYnIvbm90aWNpYXMvY2luZWJ1enpqYXZpdS9mb3JjYS1icnV0YS1tb3N0cmEtY29tby1hY2FvLWUtby1ib20taHVtb3ItcXVhbmRvLWJlbS11dGlsaXphZG9zLWNvbnNlZ3VlbS10b3JuYXItdW1hLXByb2R1Y2FvLXVtLWJvbS1maWxtZS5waHRtbNIBAA?oc=5\\\" target=\\\"_blank\\\">Ação e bom humor transformam \\\"Força Bruta\\\" em um bom filme | #CineBuzzIndica</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMipAFodHRwczovL2NpbmVidXp6LnVvbC5jb20uYnIvbm90aWNpYXMvY2luZWJ1enpqYXZpdS9mb3JjYS1icnV0YS1tb3N0cmEtY29tby1hY2FvLWUtby1ib20taHVtb3ItcXVhbmRvLWJlbS11dGlsaXphZG9zLWNvbnNlZ3VlbS10b3JuYXItdW1hLXByb2R1Y2FvLXVtLWJvbS1maWxtZS5waHRtbNIBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 14:00:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"14:00:00\"\n        },\n        {\n            \"title\": \"Bruno Pereira: Filme sobre indigenista ganha Melhor Filme em Festival\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMid2h0dHBzOi8vd3d3Lm9wb3ZvLmNvbS5ici92aWRhZWFydGUvMjAyMi8xMS8yMy9icnVuby1wZXJlaXJhLWZpbG1lLXNvYnJlLWluZGlnZW5pc3RhLWdhbmhhLW1lbGhvci1maWxtZS1lbS1mZXN0aXZhbC5odG1s0gF7aHR0cHM6Ly93d3cub3Bvdm8uY29tLmJyL3ZpZGFlYXJ0ZS8yMDIyLzExLzIzL2FtcC9icnVuby1wZXJlaXJhLWZpbG1lLXNvYnJlLWluZGlnZW5pc3RhLWdhbmhhLW1lbGhvci1maWxtZS1lbS1mZXN0aXZhbC5odG1s?oc=5\\\" target=\\\"_blank\\\">Bruno Pereira: Filme sobre indigenista ganha Melhor Filme em Festival</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMid2h0dHBzOi8vd3d3Lm9wb3ZvLmNvbS5ici92aWRhZWFydGUvMjAyMi8xMS8yMy9icnVuby1wZXJlaXJhLWZpbG1lLXNvYnJlLWluZGlnZW5pc3RhLWdhbmhhLW1lbGhvci1maWxtZS1lbS1mZXN0aXZhbC5odG1s0gF7aHR0cHM6Ly93d3cub3Bvdm8uY29tLmJyL3ZpZGFlYXJ0ZS8yMDIyLzExLzIzL2FtcC9icnVuby1wZXJlaXJhLWZpbG1lLXNvYnJlLWluZGlnZW5pc3RhLWdhbmhhLW1lbGhvci1maWxtZS1lbS1mZXN0aXZhbC5odG1s?oc=5\",\n            \"datetime\": \"23/11/2022 às 15:10:06\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"15:10:06\"\n        },\n        {\n            \"title\": \"No dia da estreia do Brasil na Copa, Nubank lança filme temático\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMigQFodHRwczovL3d3dy5tZWlvZW1lbnNhZ2VtLmNvbS5ici9ob21lL2NvbXVuaWNhY2FvLzIwMjIvMTEvMjQvbm8tZGlhLWRhLWVzdHJlaWEtZG8tYnJhc2lsLW5hLWNvcGEtbnViYW5rLWxhbmNhLWZpbG1lLXRlbWF0aWNvLmh0bWzSAQA?oc=5\\\" target=\\\"_blank\\\">No dia da estreia do Brasil na Copa, Nubank lança filme temático</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMigQFodHRwczovL3d3dy5tZWlvZW1lbnNhZ2VtLmNvbS5ici9ob21lL2NvbXVuaWNhY2FvLzIwMjIvMTEvMjQvbm8tZGlhLWRhLWVzdHJlaWEtZG8tYnJhc2lsLW5hLWNvcGEtbnViYW5rLWxhbmNhLWZpbG1lLXRlbWF0aWNvLmh0bWzSAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 15:43:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"15:43:00\"\n        },\n        {\n            \"title\": \"Leia a crítica de Até os Ossos, com Timothée Chalamet\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiRWh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy9jcml0aWNhcy9hdGUtb3Mtb3Nzb3MtY3JpdGljYS1maWxtZdIBAA?oc=5\\\" target=\\\"_blank\\\">Leia a crítica de Até os Ossos, com Timothée Chalamet</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiRWh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy9jcml0aWNhcy9hdGUtb3Mtb3Nzb3MtY3JpdGljYS1maWxtZdIBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 12:06:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"12:06:00\"\n        },\n        {\n            \"title\": \"Saiba qual filme o SBT exibe nesta sexta-feira na Tela de Sucessos\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMioAFodHRwczovL3d3dy51YWkuY29tLmJyL2FwcC9lbnRyZXRlbmltZW50by9zZXJpZXMtZS10di8yMDIyLzExLzI0L25vdC1zZXJpZXMtZS10diwyOTU3NjQvc2FpYmEtcXVhbC1maWxtZS1vLXNidC1leGliZS1uZXN0YS1zZXh0YS1mZWlyYS1uYS10ZWxhLWRlLXN1Y2Vzc29zLnNodG1s0gGgAWh0dHBzOi8vd3d3LnVhaS5jb20uYnIvYW1wL2VudHJldGVuaW1lbnRvL3Nlcmllcy1lLXR2LzIwMjIvMTEvMjQvbm90LXNlcmllcy1lLXR2LDI5NTc2NC9zYWliYS1xdWFsLWZpbG1lLW8tc2J0LWV4aWJlLW5lc3RhLXNleHRhLWZlaXJhLW5hLXRlbGEtZGUtc3VjZXNzb3Muc2h0bWw?oc=5\\\" target=\\\"_blank\\\">Saiba qual filme o SBT exibe nesta sexta-feira na Tela de Sucessos</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMioAFodHRwczovL3d3dy51YWkuY29tLmJyL2FwcC9lbnRyZXRlbmltZW50by9zZXJpZXMtZS10di8yMDIyLzExLzI0L25vdC1zZXJpZXMtZS10diwyOTU3NjQvc2FpYmEtcXVhbC1maWxtZS1vLXNidC1leGliZS1uZXN0YS1zZXh0YS1mZWlyYS1uYS10ZWxhLWRlLXN1Y2Vzc29zLnNodG1s0gGgAWh0dHBzOi8vd3d3LnVhaS5jb20uYnIvYW1wL2VudHJldGVuaW1lbnRvL3Nlcmllcy1lLXR2LzIwMjIvMTEvMjQvbm90LXNlcmllcy1lLXR2LDI5NTc2NC9zYWliYS1xdWFsLWZpbG1lLW8tc2J0LWV4aWJlLW5lc3RhLXNleHRhLWZlaXJhLW5hLXRlbGEtZGUtc3VjZXNzb3Muc2h0bWw?oc=5\",\n            \"datetime\": \"24/11/2022 às 20:43:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"20:43:00\"\n        },\n        {\n            \"title\": \"Guardiões da Galáxia 3: Diretor revela como filme será diferente dos anteriores\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMifWh0dHBzOi8vb2JzZXJ2YXRvcmlvZG9jaW5lbWEudW9sLmNvbS5ici9maWxtZXMvZ3VhcmRpb2VzLWRhLWdhbGF4aWEtMy1kaXJldG9yLXJldmVsYS1jb21vLWZpbG1lLXNlcmEtZGlmZXJlbnRlLWRvcy1hbnRlcmlvcmVz0gEA?oc=5\\\" target=\\\"_blank\\\">Guardiões da Galáxia 3: Diretor revela como filme será diferente dos anteriores</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMifWh0dHBzOi8vb2JzZXJ2YXRvcmlvZG9jaW5lbWEudW9sLmNvbS5ici9maWxtZXMvZ3VhcmRpb2VzLWRhLWdhbGF4aWEtMy1kaXJldG9yLXJldmVsYS1jb21vLWZpbG1lLXNlcmEtZGlmZXJlbnRlLWRvcy1hbnRlcmlvcmVz0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 12:00:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"12:00:00\"\n        },\n        {\n            \"title\": \"'Eu não sou seu negro'. Filme será exibido na FCM com palestra de Raoul Peck\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vd3d3LnVuaWNhbXAuYnIvdW5pY2FtcC9ldmVudG9zLzIwMjIvMTEvMjQvZXUtbmFvLXNvdS1zZXUtbmVncm8tZmlsbWUtc2VyYS1leGliaWRvLW5hLWZjbS1jb20tcGFsZXN0cmEtZGUtcmFvdWwtcGVja9IBAA?oc=5\\\" target=\\\"_blank\\\">'Eu não sou seu negro'. Filme será exibido na FCM com palestra de Raoul Peck</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vd3d3LnVuaWNhbXAuYnIvdW5pY2FtcC9ldmVudG9zLzIwMjIvMTEvMjQvZXUtbmFvLXNvdS1zZXUtbmVncm8tZmlsbWUtc2VyYS1leGliaWRvLW5hLWZjbS1jb20tcGFsZXN0cmEtZGUtcmFvdWwtcGVja9IBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 16:46:36\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"16:46:36\"\n        },\n        {\n            \"title\": \"As Nadadoras: Emocionante filme da Netflix é baseado em uma história real\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vYW9kaXNzZWlhLmNvbS9hcy1uYWRhZG9yYXMtZmlsbWUtbmV0ZmxpeC1oaXN0b3JpYS1yZWFsL9IBAA?oc=5\\\" target=\\\"_blank\\\">As Nadadoras: Emocionante filme da Netflix é baseado em uma história real</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vYW9kaXNzZWlhLmNvbS9hcy1uYWRhZG9yYXMtZmlsbWUtbmV0ZmxpeC1oaXN0b3JpYS1yZWFsL9IBAA?oc=5\",\n            \"datetime\": \"23/11/2022 às 23:03:39\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"23:03:39\"\n        },\n        {\n            \"title\": \"Touken Ranbu: 2º filme live-action estreia em março no Japão\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiXmh0dHBzOi8vd3d3Lmpib3guY29tLmJyLzIwMjIvMTEvMjQvdG91a2VuLXJhYnUtMm8tZmlsbWUtbGl2ZS1hY3Rpb24tZXN0cmVpYS1lbS1tYXJjby1uby1qYXBhby_SAQA?oc=5\\\" target=\\\"_blank\\\">Touken Ranbu: 2º filme live-action estreia em março no Japão</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiXmh0dHBzOi8vd3d3Lmpib3guY29tLmJyLzIwMjIvMTEvMjQvdG91a2VuLXJhYnUtMm8tZmlsbWUtbGl2ZS1hY3Rpb24tZXN0cmVpYS1lbS1tYXJjby1uby1qYXBhby_SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 12:29:15\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"12:29:15\"\n        },\n        {\n            \"title\": \"10 coisas que podemos aprender sobre lúpus com o filme 'Depois do Universo'\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMigQFodHRwczovL3d3dy51b2wuY29tLmJyL3ZpdmFiZW0vbm90aWNpYXMvcmVkYWNhby8yMDIyLzExLzIyLzEwLWNvaXNhcy1wYXJhLWFwcmVuZGVyLXNvYnJlLWx1cHVzLWNvbS1vLWZpbG1lLWRlcG9pcy1kby11bml2ZXJzby5odG3SAQA?oc=5\\\" target=\\\"_blank\\\">10 coisas que podemos aprender sobre lúpus com o filme 'Depois do Universo'</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMigQFodHRwczovL3d3dy51b2wuY29tLmJyL3ZpdmFiZW0vbm90aWNpYXMvcmVkYWNhby8yMDIyLzExLzIyLzEwLWNvaXNhcy1wYXJhLWFwcmVuZGVyLXNvYnJlLWx1cHVzLWNvbS1vLWZpbG1lLWRlcG9pcy1kby11bml2ZXJzby5odG3SAQA?oc=5\",\n            \"datetime\": \"22/11/2022 às 04:00:00\",\n            \"date\": \"22/11/2022\",\n            \"time\": \"04:00:00\"\n        },\n        {\n            \"title\": \"Shrek: filme curto assustador mostra transformação de Fiona em ogra; veja!\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMidGh0dHBzOi8vd3d3LnRlY211bmRvLmNvbS5ici9taW5oYS1zZXJpZS8yNTQ5MjItc2hyZWstZmlsbWUtY3VydG8tYXNzdXN0YWRvci1tb3N0cmEtdHJhbnNmb3JtYWNhby1maW9uYS1vZ3JhLXZlamEuaHRt0gEA?oc=5\\\" target=\\\"_blank\\\">Shrek: filme curto assustador mostra transformação de Fiona em ogra; veja!</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMidGh0dHBzOi8vd3d3LnRlY211bmRvLmNvbS5ici9taW5oYS1zZXJpZS8yNTQ5MjItc2hyZWstZmlsbWUtY3VydG8tYXNzdXN0YWRvci1tb3N0cmEtdHJhbnNmb3JtYWNhby1maW9uYS1vZ3JhLXZlamEuaHRt0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 16:00:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"16:00:00\"\n        },\n        {\n            \"title\": \"Xuxa faz pausa em gravação de filme por causa de diagnóstico de Covid-19\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMihQFodHRwczovL2pvcm5hbGRlYnJhc2lsaWEuY29tLmJyL2VudHJldGVuaW1lbnRvL2thdGlhLWZsYXZpYS94dXhhLWZhei1wYXVzYS1lbS1ncmF2YWNhby1kZS1maWxtZS1wb3ItY2F1c2EtZGUtZGlhZ25vc3RpY28tZGUtY292aWQtMTkv0gEA?oc=5\\\" target=\\\"_blank\\\">Xuxa faz pausa em gravação de filme por causa de diagnóstico de Covid-19</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMihQFodHRwczovL2pvcm5hbGRlYnJhc2lsaWEuY29tLmJyL2VudHJldGVuaW1lbnRvL2thdGlhLWZsYXZpYS94dXhhLWZhei1wYXVzYS1lbS1ncmF2YWNhby1kZS1maWxtZS1wb3ItY2F1c2EtZGUtZGlhZ25vc3RpY28tZGUtY292aWQtMTkv0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 02:30:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"02:30:00\"\n        },\n        {\n            \"title\": \"\\\"O filme mais sujo e sangrento que já fiz\\\": Anya Taylor-Joy fala sobre o prelúdio de Mad Max, Furiosa\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzOTQwL9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzk0MC8?oc=5\\\" target=\\\"_blank\\\">\\\"O filme mais sujo e sangrento que já fiz\\\": Anya Taylor-Joy fala sobre o prelúdio de Mad Max, Furiosa</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzOTQwL9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzk0MC8?oc=5\",\n            \"datetime\": \"24/11/2022 às 11:02:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"11:02:00\"\n        },\n        {\n            \"title\": \"‘Os Aventureiros – A Origem’: Filme com Luccas Neto ganha data de estreia e trailer\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMibWh0dHBzOi8vY2luZXBvcC5jb20uYnIvb3MtYXZlbnR1cmVpcm9zLWEtb3JpZ2VtLWZpbG1lLWNvbS1sdWNjYXMtbmV0by1nYW5oYS1kYXRhLWRlLWVzdHJlaWEtZS10cmFpbGVyLTM3NjI5NS_SAQA?oc=5\\\" target=\\\"_blank\\\">‘Os Aventureiros – A Origem’: Filme com Luccas Neto ganha data de estreia e trailer</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMibWh0dHBzOi8vY2luZXBvcC5jb20uYnIvb3MtYXZlbnR1cmVpcm9zLWEtb3JpZ2VtLWZpbG1lLWNvbS1sdWNjYXMtbmV0by1nYW5oYS1kYXRhLWRlLWVzdHJlaWEtZS10cmFpbGVyLTM3NjI5NS_SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 14:48:36\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"14:48:36\"\n        },\n        {\n            \"title\": \"Sra. Harris Vai a Paris | Leia a crítica do filme com Lesley Manville\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiQWh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy9jcml0aWNhcy9zcmEtaGFycmlzLXZhaS1hLXBhcmlz0gEA?oc=5\\\" target=\\\"_blank\\\">Sra. Harris Vai a Paris | Leia a crítica do filme com Lesley Manville</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiQWh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy9jcml0aWNhcy9zcmEtaGFycmlzLXZhaS1hLXBhcmlz0gEA?oc=5\",\n            \"datetime\": \"23/11/2022 às 15:37:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"15:37:00\"\n        },\n        {\n            \"title\": \"John Wick 4: Diretor revela três influências surpreendentes para próximo filme de Keanu Reeves; confira\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzOTQ2L9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzk0Ni8?oc=5\\\" target=\\\"_blank\\\">John Wick 4: Diretor revela três influências surpreendentes para próximo filme de Keanu Reeves; confira</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzOTQ2L9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzk0Ni8?oc=5\",\n            \"datetime\": \"24/11/2022 às 10:35:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"10:35:00\"\n        },\n        {\n            \"title\": \"Pegue os lencinhos, porque este filme na Netflix vai partir seu coração em mil pedaços\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMieGh0dHBzOi8vd3d3LnJldmlzdGFidWxhLmNvbS81NjcxOC1wZWd1ZS1vcy1sZW5jaW5ob3MtcG9ycXVlLWVzdGUtZmlsbWUtbmEtbmV0ZmxpeC12YWktcGFydGlyLXNldS1jb3JhY2FvLWVtLW1pbC1wZWRhY29zL9IBAA?oc=5\\\" target=\\\"_blank\\\">Pegue os lencinhos, porque este filme na Netflix vai partir seu coração em mil pedaços</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMieGh0dHBzOi8vd3d3LnJldmlzdGFidWxhLmNvbS81NjcxOC1wZWd1ZS1vcy1sZW5jaW5ob3MtcG9ycXVlLWVzdGUtZmlsbWUtbmEtbmV0ZmxpeC12YWktcGFydGlyLXNldS1jb3JhY2FvLWVtLW1pbC1wZWRhY29zL9IBAA?oc=5\",\n            \"datetime\": \"23/11/2022 às 12:37:21\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"12:37:21\"\n        },\n        {\n            \"title\": \"As 5 trilhas sonoras mais famosas dos filmes da Disney\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiVmh0dHBzOi8vZGlzbmV5LmNvbS5ici9ub3ZpZGFkZXMvYXMtNS10cmlsaGFzLXNvbm9yYXMtbWFpcy1mYW1vc2FzLWRvcy1maWxtZXMtZGEtZGlzbmV50gEA?oc=5\\\" target=\\\"_blank\\\">As 5 trilhas sonoras mais famosas dos filmes da Disney</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiVmh0dHBzOi8vZGlzbmV5LmNvbS5ici9ub3ZpZGFkZXMvYXMtNS10cmlsaGFzLXNvbm9yYXMtbWFpcy1mYW1vc2FzLWRvcy1maWxtZXMtZGEtZGlzbmV50gEA?oc=5\",\n            \"datetime\": \"23/11/2022 às 15:00:05\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"15:00:05\"\n        },\n        {\n            \"title\": \"Casa do filme \\\"Os Goonies\\\" é colocada à venda\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMigQFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZ2VudGUvY2FzYS1kby1maWxtZS1vcy1nb29uaWVzLWUtY29sb2NhZGEtYS12ZW5kYSxmNDM1ZGQ1ZDM2MzE0OWVkNDlhZDljNDI0NzRmNWVkZm9jdDh0ZXpsLmh0bWzSAQA?oc=5\\\" target=\\\"_blank\\\">Casa do filme \\\"Os Goonies\\\" é colocada à venda</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMigQFodHRwczovL3d3dy50ZXJyYS5jb20uYnIvZGl2ZXJzYW8vZ2VudGUvY2FzYS1kby1maWxtZS1vcy1nb29uaWVzLWUtY29sb2NhZGEtYS12ZW5kYSxmNDM1ZGQ1ZDM2MzE0OWVkNDlhZDljNDI0NzRmNWVkZm9jdDh0ZXpsLmh0bWzSAQA?oc=5\",\n            \"datetime\": \"23/11/2022 às 15:44:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"15:44:00\"\n        },\n        {\n            \"title\": \"Filme de aventura, Mundo Estranho chega aos cinemas de Brusque\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiWGh0dHBzOi8vb211bmljaXBpby5jb20uYnIvZmlsbWUtZGUtYXZlbnR1cmEtbXVuZG8tZXN0cmFuaG8tY2hlZ2EtYW9zLWNpbmVtYXMtZGUtYnJ1c3F1ZS_SAQA?oc=5\\\" target=\\\"_blank\\\">Filme de aventura, Mundo Estranho chega aos cinemas de Brusque</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiWGh0dHBzOi8vb211bmljaXBpby5jb20uYnIvZmlsbWUtZGUtYXZlbnR1cmEtbXVuZG8tZXN0cmFuaG8tY2hlZ2EtYW9zLWNpbmVtYXMtZGUtYnJ1c3F1ZS_SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 06:00:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"06:00:00\"\n        },\n        {\n            \"title\": \"Taika Waititi revela que Next Goal Wins, próximo filme protagonizado por Michael Fassbender, é sobre azarões\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMijQFodHRwczovL3d3dy5jaGlwcHUuY29tLmJyL25vdGljaWFzL3RhaWthLXdhaXRpdGktcmV2ZWxhLXF1ZS1uZXh0LWdvYWwtd2lucy1wcm94aW1vLWZpbG1lLXByb3RhZ29uaXphZG8tcG9yLW1pY2hhZWwtZmFzc2JlbmRlci1lLXNvYnJlLWF6YXJvZXPSAQA?oc=5\\\" target=\\\"_blank\\\">Taika Waititi revela que Next Goal Wins, próximo filme protagonizado por Michael Fassbender, é sobre azarões</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMijQFodHRwczovL3d3dy5jaGlwcHUuY29tLmJyL25vdGljaWFzL3RhaWthLXdhaXRpdGktcmV2ZWxhLXF1ZS1uZXh0LWdvYWwtd2lucy1wcm94aW1vLWZpbG1lLXByb3RhZ29uaXphZG8tcG9yLW1pY2hhZWwtZmFzc2JlbmRlci1lLXNvYnJlLWF6YXJvZXPSAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 11:57:12\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"11:57:12\"\n        },\n        {\n            \"title\": \"Teen Wolf: O Filme | Elenco estampa novas imagens inéditas\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiQmh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy90ZWVuLXdvbGYtZmlsbWUtaW1hZ2Vucy1pbmVkaXRhc9IBAA?oc=5\\\" target=\\\"_blank\\\">Teen Wolf: O Filme | Elenco estampa novas imagens inéditas</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiQmh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy90ZWVuLXdvbGYtZmlsbWUtaW1hZ2Vucy1pbmVkaXRhc9IBAA?oc=5\",\n            \"datetime\": \"21/11/2022 às 12:26:00\",\n            \"date\": \"21/11/2022\",\n            \"time\": \"12:26:00\"\n        },\n        {\n            \"title\": \"Cantora Thaís Gulin fará estreia como atriz no cinema em filme estrelado pela ex-'BBB' Maria\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMijwFodHRwczovL29nbG9iby5nbG9iby5jb20va29ndXQvbm90aWNpYS8yMDIyLzExL2NhbnRvcmEtdGhhaXMtZ3VsaW4tZmFyYS1lc3RyZWlhLWNvbW8tYXRyaXotbm8tY2luZW1hLWVtLWZpbG1lLWVzdHJlbGFkby1wZWxhLWV4LWJiYi1tYXJpYS5naHRtbNIBmgFodHRwczovL29nbG9iby5nbG9iby5jb20vZ29vZ2xlL2FtcC9rb2d1dC9ub3RpY2lhLzIwMjIvMTEvY2FudG9yYS10aGFpcy1ndWxpbi1mYXJhLWVzdHJlaWEtY29tby1hdHJpei1uby1jaW5lbWEtZW0tZmlsbWUtZXN0cmVsYWRvLXBlbGEtZXgtYmJiLW1hcmlhLmdodG1s?oc=5\\\" target=\\\"_blank\\\">Cantora Thaís Gulin fará estreia como atriz no cinema em filme estrelado pela ex-'BBB' Maria</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMijwFodHRwczovL29nbG9iby5nbG9iby5jb20va29ndXQvbm90aWNpYS8yMDIyLzExL2NhbnRvcmEtdGhhaXMtZ3VsaW4tZmFyYS1lc3RyZWlhLWNvbW8tYXRyaXotbm8tY2luZW1hLWVtLWZpbG1lLWVzdHJlbGFkby1wZWxhLWV4LWJiYi1tYXJpYS5naHRtbNIBmgFodHRwczovL29nbG9iby5nbG9iby5jb20vZ29vZ2xlL2FtcC9rb2d1dC9ub3RpY2lhLzIwMjIvMTEvY2FudG9yYS10aGFpcy1ndWxpbi1mYXJhLWVzdHJlaWEtY29tby1hdHJpei1uby1jaW5lbWEtZW0tZmlsbWUtZXN0cmVsYWRvLXBlbGEtZXgtYmJiLW1hcmlhLmdodG1s?oc=5\",\n            \"datetime\": \"24/11/2022 às 06:15:07\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"06:15:07\"\n        },\n        {\n            \"title\": \"Anitta produz filme sobre Ludmila Dayer; obra retrata doença da atriz\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiUGh0dHBzOi8vd3d3LnVvbC5jb20uYnIvc3BsYXNoL25vdGljaWFzLzIwMjIvMTEvMjMvYW5pdHRhLWZpbG1lLWx1ZG1pbGEtZGF5ZXIuaHRt0gEA?oc=5\\\" target=\\\"_blank\\\">Anitta produz filme sobre Ludmila Dayer; obra retrata doença da atriz</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiUGh0dHBzOi8vd3d3LnVvbC5jb20uYnIvc3BsYXNoL25vdGljaWFzLzIwMjIvMTEvMjMvYW5pdHRhLWZpbG1lLWx1ZG1pbGEtZGF5ZXIuaHRt0gEA?oc=5\",\n            \"datetime\": \"23/11/2022 às 08:49:55\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"08:49:55\"\n        },\n        {\n            \"title\": \"Saiba qual filme a Record TV exibe nesta sexta-feira na Super Tela\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMicmh0dHBzOi8vb2JzZXJ2YXRvcmlvZGF0di51b2wuY29tLmJyL25vdGljaWFzL3NhaWJhLXF1YWwtZmlsbWUtYS1yZWNvcmQtdHYtZXhpYmUtbmVzdGEtc2V4dGEtZmVpcmEtbmEtc3VwZXItdGVsYS01OdIBAA?oc=5\\\" target=\\\"_blank\\\">Saiba qual filme a Record TV exibe nesta sexta-feira na Super Tela</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMicmh0dHBzOi8vb2JzZXJ2YXRvcmlvZGF0di51b2wuY29tLmJyL25vdGljaWFzL3NhaWJhLXF1YWwtZmlsbWUtYS1yZWNvcmQtdHYtZXhpYmUtbmVzdGEtc2V4dGEtZmVpcmEtbmEtc3VwZXItdGVsYS01OdIBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 11:22:30\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"11:22:30\"\n        },\n        {\n            \"title\": \"Foto vazada de Pânico 6 revela elenco do novo filme\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiS2h0dHBzOi8vZXBpcG9jYS5jb20uYnIvZm90by12YXphZGEtZGUtcGFuaWNvLTYtcmV2ZWxhLWVsZW5jby1kby1ub3ZvLWZpbG1lL9IBT2h0dHBzOi8vZXBpcG9jYS5jb20uYnIvZm90by12YXphZGEtZGUtcGFuaWNvLTYtcmV2ZWxhLWVsZW5jby1kby1ub3ZvLWZpbG1lL2FtcC8?oc=5\\\" target=\\\"_blank\\\">Foto vazada de Pânico 6 revela elenco do novo filme</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiS2h0dHBzOi8vZXBpcG9jYS5jb20uYnIvZm90by12YXphZGEtZGUtcGFuaWNvLTYtcmV2ZWxhLWVsZW5jby1kby1ub3ZvLWZpbG1lL9IBT2h0dHBzOi8vZXBpcG9jYS5jb20uYnIvZm90by12YXphZGEtZGUtcGFuaWNvLTYtcmV2ZWxhLWVsZW5jby1kby1ub3ZvLWZpbG1lL2FtcC8?oc=5\",\n            \"datetime\": \"24/11/2022 às 18:30:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"18:30:00\"\n        },\n        {\n            \"title\": \"Scooby-Doo: Warner pediu para ator diminuir salário na continuação\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiUGh0dHBzOi8vdGFuZ2VyaW5hLnVvbC5jb20uYnIvZmlsbWVzLXNlcmllcy9zY29vYnktZG9vLWZyZWRkaWUtcHJpbnplLWpyLXNhbGFyaW8v0gEA?oc=5\\\" target=\\\"_blank\\\">Scooby-Doo: Warner pediu para ator diminuir salário na continuação</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiUGh0dHBzOi8vdGFuZ2VyaW5hLnVvbC5jb20uYnIvZmlsbWVzLXNlcmllcy9zY29vYnktZG9vLWZyZWRkaWUtcHJpbnplLWpyLXNhbGFyaW8v0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 17:40:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"17:40:00\"\n        },\n        {\n            \"title\": \"Conheça o elenco de dublagem do primeiro filme de Psycho-Pass Sinners of the System\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMijAFodHRwczovL3d3dy5jcnVuY2h5cm9sbC5jb20vcHQtYnIvYW5pbWUtbmV3cy8yMDIyLzExLzI0LTEvY29uaGVhLW8tZWxlbmNvLWRlLWR1YmxhZ2VtLWRvLXByaW1laXJvLWZpbG1lLWRlLXBzeWNoby1wYXNzLXNpbm5lcnMtb2YtdGhlLXN5c3RlbdIBAA?oc=5\\\" target=\\\"_blank\\\">Conheça o elenco de dublagem do primeiro filme de Psycho-Pass Sinners of the System</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMijAFodHRwczovL3d3dy5jcnVuY2h5cm9sbC5jb20vcHQtYnIvYW5pbWUtbmV3cy8yMDIyLzExLzI0LTEvY29uaGVhLW8tZWxlbmNvLWRlLWR1YmxhZ2VtLWRvLXByaW1laXJvLWZpbG1lLWRlLXBzeWNoby1wYXNzLXNpbm5lcnMtb2YtdGhlLXN5c3RlbdIBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 21:10:30\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"21:10:30\"\n        },\n        {\n            \"title\": \"Acusações de plágio no mundo das séries e filmes\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiemh0dHBzOi8vbm90aWNpYXMudW9sLmNvbS5ici91bHRpbWFzLW5vdGljaWFzL2RldXRzY2hld2VsbGUvMjAyMi8xMS8yNC9hY3VzYWNvZXMtZGUtcGxhZ2lvLW5vLW11bmRvLWRhcy1zZXJpZXMtZS1maWxtZXMuaHRt0gF-aHR0cHM6Ly9ub3RpY2lhcy51b2wuY29tLmJyL3VsdGltYXMtbm90aWNpYXMvZGV1dHNjaGV3ZWxsZS8yMDIyLzExLzI0L2FjdXNhY29lcy1kZS1wbGFnaW8tbm8tbXVuZG8tZGFzLXNlcmllcy1lLWZpbG1lcy5hbXAuaHRt?oc=5\\\" target=\\\"_blank\\\">Acusações de plágio no mundo das séries e filmes</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiemh0dHBzOi8vbm90aWNpYXMudW9sLmNvbS5ici91bHRpbWFzLW5vdGljaWFzL2RldXRzY2hld2VsbGUvMjAyMi8xMS8yNC9hY3VzYWNvZXMtZGUtcGxhZ2lvLW5vLW11bmRvLWRhcy1zZXJpZXMtZS1maWxtZXMuaHRt0gF-aHR0cHM6Ly9ub3RpY2lhcy51b2wuY29tLmJyL3VsdGltYXMtbm90aWNpYXMvZGV1dHNjaGV3ZWxsZS8yMDIyLzExLzI0L2FjdXNhY29lcy1kZS1wbGFnaW8tbm8tbXVuZG8tZGFzLXNlcmllcy1lLWZpbG1lcy5hbXAuaHRt?oc=5\",\n            \"datetime\": \"24/11/2022 às 11:59:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"11:59:00\"\n        },\n        {\n            \"title\": \"Diretor de “Titanic” revela que Leonardo DiCaprio quase não fez o filme; entenda\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiiAFodHRwczovL29saGFyZGlnaXRhbC5jb20uYnIvMjAyMi8xMS8yMy9jaW5lbWEtZS1zdHJlYW1pbmcvZGlyZXRvci1kZS10aXRhbmljLXJldmVsYS1xdWUtbGVvbmFyZG8tZGljYXByaW8tcXVhc2UtbmFvLWZlei1vLWZpbG1lLWVudGVuZGEv0gEA?oc=5\\\" target=\\\"_blank\\\">Diretor de “Titanic” revela que Leonardo DiCaprio quase não fez o filme; entenda</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiiAFodHRwczovL29saGFyZGlnaXRhbC5jb20uYnIvMjAyMi8xMS8yMy9jaW5lbWEtZS1zdHJlYW1pbmcvZGlyZXRvci1kZS10aXRhbmljLXJldmVsYS1xdWUtbGVvbmFyZG8tZGljYXByaW8tcXVhc2UtbmFvLWZlei1vLWZpbG1lLWVudGVuZGEv0gEA?oc=5\",\n            \"datetime\": \"23/11/2022 às 12:35:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"12:35:00\"\n        },\n        {\n            \"title\": \"Festival do Cinema Italiano em Petrópolis começa nesta quarta com filme candidato ao Oscar 2023\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMinwFodHRwczovL2cxLmdsb2JvLmNvbS9yai9yZWdpYW8tc2VycmFuYS9ub3RpY2lhLzIwMjIvMTEvMjIvZmVzdGl2YWwtZG8tY2luZW1hLWl0YWxpYW5vLWVtLXBldHJvcG9saXMtY29tZWNhLW5lc3RhLXF1YXJ0YS1jb20tZmlsbWUtY2FuZGlkYXRvLWFvLW9zY2FyLTIwMjMuZ2h0bWzSAaoBaHR0cHM6Ly9nMS5nbG9iby5jb20vZ29vZ2xlL2FtcC9yai9yZWdpYW8tc2VycmFuYS9ub3RpY2lhLzIwMjIvMTEvMjIvZmVzdGl2YWwtZG8tY2luZW1hLWl0YWxpYW5vLWVtLXBldHJvcG9saXMtY29tZWNhLW5lc3RhLXF1YXJ0YS1jb20tZmlsbWUtY2FuZGlkYXRvLWFvLW9zY2FyLTIwMjMuZ2h0bWw?oc=5\\\" target=\\\"_blank\\\">Festival do Cinema Italiano em Petrópolis começa nesta quarta com filme candidato ao Oscar 2023</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMinwFodHRwczovL2cxLmdsb2JvLmNvbS9yai9yZWdpYW8tc2VycmFuYS9ub3RpY2lhLzIwMjIvMTEvMjIvZmVzdGl2YWwtZG8tY2luZW1hLWl0YWxpYW5vLWVtLXBldHJvcG9saXMtY29tZWNhLW5lc3RhLXF1YXJ0YS1jb20tZmlsbWUtY2FuZGlkYXRvLWFvLW9zY2FyLTIwMjMuZ2h0bWzSAaoBaHR0cHM6Ly9nMS5nbG9iby5jb20vZ29vZ2xlL2FtcC9yai9yZWdpYW8tc2VycmFuYS9ub3RpY2lhLzIwMjIvMTEvMjIvZmVzdGl2YWwtZG8tY2luZW1hLWl0YWxpYW5vLWVtLXBldHJvcG9saXMtY29tZWNhLW5lc3RhLXF1YXJ0YS1jb20tZmlsbWUtY2FuZGlkYXRvLWFvLW9zY2FyLTIwMjMuZ2h0bWw?oc=5\",\n            \"datetime\": \"22/11/2022 às 20:35:11\",\n            \"date\": \"22/11/2022\",\n            \"time\": \"20:35:11\"\n        },\n        {\n            \"title\": \"Terrifier 3: diretor confirma sequência do filme ainda mais selvagem\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vaG9sbHl3b29kZm9yZXZlcnR2LmNvbS5ici9ub3RpY2lhcy9maWxtZXMvdGVycmlmaWVyLTMtZGlyZXRvci1jb25maXJtYS1zZXF1ZW5jaWEtZG8tZmlsbWUtYWluZGEtbWFpcy1zZWx2YWdlbS5waHRtbNIBAA?oc=5\\\" target=\\\"_blank\\\">Terrifier 3: diretor confirma sequência do filme ainda mais selvagem</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vaG9sbHl3b29kZm9yZXZlcnR2LmNvbS5ici9ub3RpY2lhcy9maWxtZXMvdGVycmlmaWVyLTMtZGlyZXRvci1jb25maXJtYS1zZXF1ZW5jaWEtZG8tZmlsbWUtYWluZGEtbWFpcy1zZWx2YWdlbS5waHRtbNIBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 10:00:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"10:00:00\"\n        },\n        {\n            \"title\": \"Novo filme de terror causa vômitos e desmaios no público; entenda\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzExLzE0L2NpbmVtYS1lLXN0cmVhbWluZy9ub3ZvLWZpbG1lLWRlLXRlcnJvci1jYXVzYS12b21pdG9zLWUtZGVzbWFpb3Mtbm8tcHVibGljby1lbnRlbmRhL9IBAA?oc=5\\\" target=\\\"_blank\\\">Novo filme de terror causa vômitos e desmaios no público; entenda</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMie2h0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzExLzE0L2NpbmVtYS1lLXN0cmVhbWluZy9ub3ZvLWZpbG1lLWRlLXRlcnJvci1jYXVzYS12b21pdG9zLWUtZGVzbWFpb3Mtbm8tcHVibGljby1lbnRlbmRhL9IBAA?oc=5\",\n            \"datetime\": \"14/11/2022 às 05:00:00\",\n            \"date\": \"14/11/2022\",\n            \"time\": \"05:00:00\"\n        },\n        {\n            \"title\": \"Revista Piaui\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiX2h0dHBzOi8vcGlhdWkuZm9saGEudW9sLmNvbS5ici9mYXplci11bS1maWxtZS1zb2JyZS1vLXJhY2lvbmFpcy1tZS1hanVkb3UtZW50ZW5kZXItcXVlbS1ldS1zb3Uv0gEA?oc=5\\\" target=\\\"_blank\\\">Revista Piaui</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiX2h0dHBzOi8vcGlhdWkuZm9saGEudW9sLmNvbS5ici9mYXplci11bS1maWxtZS1zb2JyZS1vLXJhY2lvbmFpcy1tZS1hanVkb3UtZW50ZW5kZXItcXVlbS1ldS1zb3Uv0gEA?oc=5\",\n            \"datetime\": \"22/11/2022 às 07:26:49\",\n            \"date\": \"22/11/2022\",\n            \"time\": \"07:26:49\"\n        },\n        {\n            \"title\": \"Guardiões da Galáxia Vol. 3 | Último filme de James Gunn na Marvel?\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiVmh0dHBzOi8vb3ZpY2lvLmNvbS5ici9ndWFyZGlvZXMtZGEtZ2FsYXhpYS12b2wtMy11bHRpbW8tZmlsbWUtZGUtamFtZXMtZ3Vubi1uYS1tYXJ2ZWwv0gEA?oc=5\\\" target=\\\"_blank\\\">Guardiões da Galáxia Vol. 3 | Último filme de James Gunn na Marvel?</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiVmh0dHBzOi8vb3ZpY2lvLmNvbS5ici9ndWFyZGlvZXMtZGEtZ2FsYXhpYS12b2wtMy11bHRpbW8tZmlsbWUtZGUtamFtZXMtZ3Vubi1uYS1tYXJ2ZWwv0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 14:50:47\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"14:50:47\"\n        },\n        {\n            \"title\": \"Diretor do filme 'O Homem que Copiava' descobre 'cópia' da obra gravada na Índia\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMigAFodHRwczovL2cxLmdsb2JvLmNvbS9ycy9yaW8tZ3JhbmRlLWRvLXN1bC9ub3RpY2lhLzIwMjIvMTEvMTkvZGlyZXRvci1maWxtZS1vLWhvbWVtLXF1ZS1jb3BpYXZhLWRlc2NvYnJlLW9icmEtZ3JhdmFkYS1pbmRpYS5naHRtbNIBiwFodHRwczovL2cxLmdsb2JvLmNvbS9nb29nbGUvYW1wL3JzL3Jpby1ncmFuZGUtZG8tc3VsL25vdGljaWEvMjAyMi8xMS8xOS9kaXJldG9yLWZpbG1lLW8taG9tZW0tcXVlLWNvcGlhdmEtZGVzY29icmUtb2JyYS1ncmF2YWRhLWluZGlhLmdodG1s?oc=5\\\" target=\\\"_blank\\\">Diretor do filme 'O Homem que Copiava' descobre 'cópia' da obra gravada na Índia</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMigAFodHRwczovL2cxLmdsb2JvLmNvbS9ycy9yaW8tZ3JhbmRlLWRvLXN1bC9ub3RpY2lhLzIwMjIvMTEvMTkvZGlyZXRvci1maWxtZS1vLWhvbWVtLXF1ZS1jb3BpYXZhLWRlc2NvYnJlLW9icmEtZ3JhdmFkYS1pbmRpYS5naHRtbNIBiwFodHRwczovL2cxLmdsb2JvLmNvbS9nb29nbGUvYW1wL3JzL3Jpby1ncmFuZGUtZG8tc3VsL25vdGljaWEvMjAyMi8xMS8xOS9kaXJldG9yLWZpbG1lLW8taG9tZW0tcXVlLWNvcGlhdmEtZGVzY29icmUtb2JyYS1ncmF2YWRhLWluZGlhLmdodG1s?oc=5\",\n            \"datetime\": \"19/11/2022 às 06:00:16\",\n            \"date\": \"19/11/2022\",\n            \"time\": \"06:00:16\"\n        },\n        {\n            \"title\": \"Procura-se: Camila Queiroz e Klebber Toledo vivem casal inusitado em trailer\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiPGh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy9wcm9jdXJhLXNlLXRyYWlsZXItaGJvLW1heNIBAA?oc=5\\\" target=\\\"_blank\\\">Procura-se: Camila Queiroz e Klebber Toledo vivem casal inusitado em trailer</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiPGh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy9wcm9jdXJhLXNlLXRyYWlsZXItaGJvLW1heNIBAA?oc=5\",\n            \"datetime\": \"22/11/2022 às 16:16:00\",\n            \"date\": \"22/11/2022\",\n            \"time\": \"16:16:00\"\n        },\n        {\n            \"title\": \"Diretor só descobriu que A Bruxa de Blair seria sucesso com cena improvisada de ator\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiXGh0dHBzOi8vZXBpcG9jYS5jb20uYnIvZmlsbWUtYS1icnV4YS1kZS1ibGFpci10ZXZlLXByb2R1Y2FvLWJhZ3VuY2FkYS1jb21vLW1hcmNhLWRlLXN1Y2Vzc28v0gEA?oc=5\\\" target=\\\"_blank\\\">Diretor só descobriu que A Bruxa de Blair seria sucesso com cena improvisada de ator</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiXGh0dHBzOi8vZXBpcG9jYS5jb20uYnIvZmlsbWUtYS1icnV4YS1kZS1ibGFpci10ZXZlLXByb2R1Y2FvLWJhZ3VuY2FkYS1jb21vLW1hcmNhLWRlLXN1Y2Vzc28v0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 14:15:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"14:15:00\"\n        },\n        {\n            \"title\": \"Olho por olho, ódio por ódio, novo filme da Netflix vai te manter com os olhos vidrados na tela até o segundo final\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMilAFodHRwczovL3d3dy5yZXZpc3RhYnVsYS5jb20vNTY3MjUtb2xoby1wb3Itb2xoby1vZGlvLXBvci1vZGlvLW5vdm8tZmlsbWUtZGEtbmV0ZmxpeC12YWktdGUtbWFudGVyLWNvbS1vcy1vbGhvcy12aWRyYWRvcy1uYS10ZWxhLWF0ZS1vLXNlZ3VuZG8tZmluYWwv0gEA?oc=5\\\" target=\\\"_blank\\\">Olho por olho, ódio por ódio, novo filme da Netflix vai te manter com os olhos vidrados na tela até o segundo final</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMilAFodHRwczovL3d3dy5yZXZpc3RhYnVsYS5jb20vNTY3MjUtb2xoby1wb3Itb2xoby1vZGlvLXBvci1vZGlvLW5vdm8tZmlsbWUtZGEtbmV0ZmxpeC12YWktdGUtbWFudGVyLWNvbS1vcy1vbGhvcy12aWRyYWRvcy1uYS10ZWxhLWF0ZS1vLXNlZ3VuZG8tZmluYWwv0gEA?oc=5\",\n            \"datetime\": \"23/11/2022 às 20:10:43\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"20:10:43\"\n        },\n        {\n            \"title\": \"Marvel finalmente fala como será o próximo filme dos X-Men\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiWWh0dHBzOi8vbGVnYWRvZGFtYXJ2ZWwuY29tLmJyL21hcnZlbC1maW5hbG1lbnRlLWZhbGEtY29tby1zZXJhLW8tcHJveGltby1maWxtZS1kb3MteC1tZW4v0gEA?oc=5\\\" target=\\\"_blank\\\">Marvel finalmente fala como será o próximo filme dos X-Men</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiWWh0dHBzOi8vbGVnYWRvZGFtYXJ2ZWwuY29tLmJyL21hcnZlbC1maW5hbG1lbnRlLWZhbGEtY29tby1zZXJhLW8tcHJveGltby1maWxtZS1kb3MteC1tZW4v0gEA?oc=5\",\n            \"datetime\": \"23/11/2022 às 13:02:49\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"13:02:49\"\n        },\n        {\n            \"title\": \"Filme na Netflix vai te manter imóvel no sofá e com os olhos grudados na tela por 130 minutos\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMigAFodHRwczovL3d3dy5yZXZpc3RhYnVsYS5jb20vNTY1NTQtZmlsbWUtbmEtbmV0ZmxpeC12YWktdGUtbWFudGVyLWltb3ZlbC1uby1zb2ZhLWUtY29tLW9zLW9saG9zLWdydWRhZG9zLW5hLXRlbGEtcG9yLTEzMC1taW51dG9zL9IBAA?oc=5\\\" target=\\\"_blank\\\">Filme na Netflix vai te manter imóvel no sofá e com os olhos grudados na tela por 130 minutos</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMigAFodHRwczovL3d3dy5yZXZpc3RhYnVsYS5jb20vNTY1NTQtZmlsbWUtbmEtbmV0ZmxpeC12YWktdGUtbWFudGVyLWltb3ZlbC1uby1zb2ZhLWUtY29tLW9zLW9saG9zLWdydWRhZG9zLW5hLXRlbGEtcG9yLTEzMC1taW51dG9zL9IBAA?oc=5\",\n            \"datetime\": \"18/11/2022 às 19:29:12\",\n            \"date\": \"18/11/2022\",\n            \"time\": \"19:29:12\"\n        },\n        {\n            \"title\": \"Entre Mulheres :: Novo filme de cineasta indicada ao Oscar ganha trailer\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMib2h0dHBzOi8vd3d3LnBhcG9kZWNpbmVtYS5jb20uYnIvbm90aWNpYXMvZW50cmUtbXVsaGVyZXMtbm92by1maWxtZS1kZS1jaW5lYXN0YS1pbmRpY2FkYS1hby1vc2Nhci1nYW5oYS10cmFpbGVyL9IBc2h0dHBzOi8vd3d3LnBhcG9kZWNpbmVtYS5jb20uYnIvbm90aWNpYXMvZW50cmUtbXVsaGVyZXMtbm92by1maWxtZS1kZS1jaW5lYXN0YS1pbmRpY2FkYS1hby1vc2Nhci1nYW5oYS10cmFpbGVyL2FtcC8?oc=5\\\" target=\\\"_blank\\\">Entre Mulheres :: Novo filme de cineasta indicada ao Oscar ganha trailer</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMib2h0dHBzOi8vd3d3LnBhcG9kZWNpbmVtYS5jb20uYnIvbm90aWNpYXMvZW50cmUtbXVsaGVyZXMtbm92by1maWxtZS1kZS1jaW5lYXN0YS1pbmRpY2FkYS1hby1vc2Nhci1nYW5oYS10cmFpbGVyL9IBc2h0dHBzOi8vd3d3LnBhcG9kZWNpbmVtYS5jb20uYnIvbm90aWNpYXMvZW50cmUtbXVsaGVyZXMtbm92by1maWxtZS1kZS1jaW5lYXN0YS1pbmRpY2FkYS1hby1vc2Nhci1nYW5oYS10cmFpbGVyL2FtcC8?oc=5\",\n            \"datetime\": \"24/11/2022 às 16:01:43\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"16:01:43\"\n        },\n        {\n            \"title\": \"Filme de Luther irá expandir o universo da série, promete Idris Elba\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiSWh0dHBzOi8vdHJlY29ib3guY29tLmJyL2ZpbG1lLWRlLWx1dGhlci1pcmEtZXhwYW5kaXItby11bml2ZXJzby1kYS1zZXJpZS_SAQA?oc=5\\\" target=\\\"_blank\\\">Filme de Luther irá expandir o universo da série, promete Idris Elba</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiSWh0dHBzOi8vdHJlY29ib3guY29tLmJyL2ZpbG1lLWRlLWx1dGhlci1pcmEtZXhwYW5kaXItby11bml2ZXJzby1kYS1zZXJpZS_SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 19:45:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"19:45:00\"\n        },\n        {\n            \"title\": \"Quentin Tarantino: 10º e último filme do diretor será 'uma história original'; entenda\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiemh0dHBzOi8vcm9sbGluZ3N0b25lLnVvbC5jb20uYnIvY2luZW1hL3F1ZW50aW4tdGFyYW50aW5vLTEwby1lLXVsdGltby1maWxtZS1kby1kaXJldG9yLXNlcmEtdW1hLWhpc3RvcmlhLW9yaWdpbmFsLWVudGVuZGEv0gEA?oc=5\\\" target=\\\"_blank\\\">Quentin Tarantino: 10º e último filme do diretor será 'uma história original'; entenda</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiemh0dHBzOi8vcm9sbGluZ3N0b25lLnVvbC5jb20uYnIvY2luZW1hL3F1ZW50aW4tdGFyYW50aW5vLTEwby1lLXVsdGltby1maWxtZS1kby1kaXJldG9yLXNlcmEtdW1hLWhpc3RvcmlhLW9yaWdpbmFsLWVudGVuZGEv0gEA?oc=5\",\n            \"datetime\": \"23/11/2022 às 11:58:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"11:58:00\"\n        },\n        {\n            \"title\": \"'Aldeotas', peça de Gero Camilo, vira filme e mantém o lirismo\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMibWh0dHBzOi8vd3d3LmFjZXNzYS5jb20vY3VsdHVyYS8yMDIyLzExLzExMTQ1OC1hbGRlb3Rhcy1wZWNhLWRlLWdlcm8tY2FtaWxvLXZpcmEtZmlsbWUtZS1tYW50ZW0tby1saXJpc21vLmh0bWzSAXFodHRwczovL3d3dy5hY2Vzc2EuY29tL2N1bHR1cmEvMjAyMi8xMS9hbXAvMTExNDU4LWFsZGVvdGFzLXBlY2EtZGUtZ2Vyby1jYW1pbG8tdmlyYS1maWxtZS1lLW1hbnRlbS1vLWxpcmlzbW8uaHRtbA?oc=5\\\" target=\\\"_blank\\\">'Aldeotas', peça de Gero Camilo, vira filme e mantém o lirismo</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMibWh0dHBzOi8vd3d3LmFjZXNzYS5jb20vY3VsdHVyYS8yMDIyLzExLzExMTQ1OC1hbGRlb3Rhcy1wZWNhLWRlLWdlcm8tY2FtaWxvLXZpcmEtZmlsbWUtZS1tYW50ZW0tby1saXJpc21vLmh0bWzSAXFodHRwczovL3d3dy5hY2Vzc2EuY29tL2N1bHR1cmEvMjAyMi8xMS9hbXAvMTExNDU4LWFsZGVvdGFzLXBlY2EtZGUtZ2Vyby1jYW1pbG8tdmlyYS1maWxtZS1lLW1hbnRlbS1vLWxpcmlzbW8uaHRtbA?oc=5\",\n            \"datetime\": \"23/11/2022 às 16:47:49\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"16:47:49\"\n        },\n        {\n            \"title\": \"Lupita Nyong’o e Winston Duke quase viraram o “Pantera Negra”, revela roteirista do filme\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMicWh0dHBzOi8vZ2l6bW9kby51b2wuY29tLmJyL2x1cGl0YS1ueW9uZ28tZS13aW5zdG9uLWR1a2UtcXVhc2UtdmlyYXJhbS1vLXBhbnRlcmEtbmVncmEtcmV2ZWxhLXJvdGVpcmlzdGEtZG8tZmlsbWUv0gFxaHR0cHM6Ly9naXptb2RvLnVvbC5jb20uYnIvbHVwaXRhLW55b25nby1lLXdpbnN0b24tZHVrZS1xdWFzZS12aXJhcmFtLW8tcGFudGVyYS1uZWdyYS1yZXZlbGEtcm90ZWlyaXN0YS1kby1maWxtZS8?oc=5\\\" target=\\\"_blank\\\">Lupita Nyong’o e Winston Duke quase viraram o “Pantera Negra”, revela roteirista do filme</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMicWh0dHBzOi8vZ2l6bW9kby51b2wuY29tLmJyL2x1cGl0YS1ueW9uZ28tZS13aW5zdG9uLWR1a2UtcXVhc2UtdmlyYXJhbS1vLXBhbnRlcmEtbmVncmEtcmV2ZWxhLXJvdGVpcmlzdGEtZG8tZmlsbWUv0gFxaHR0cHM6Ly9naXptb2RvLnVvbC5jb20uYnIvbHVwaXRhLW55b25nby1lLXdpbnN0b24tZHVrZS1xdWFzZS12aXJhcmFtLW8tcGFudGVyYS1uZWdyYS1yZXZlbGEtcm90ZWlyaXN0YS1kby1maWxtZS8?oc=5\",\n            \"datetime\": \"24/11/2022 às 18:21:58\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"18:21:58\"\n        },\n        {\n            \"title\": \"Todo Poderoso: Roteiristas revelam que filme com Jim Carrey teria sequência\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiUGh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy90b2RvLXBvZGVyb3NvLWppbS1jYXJyZXktc2VxdWVuY2lhLXJvdGVpcmlzdGFz0gEA?oc=5\\\" target=\\\"_blank\\\">Todo Poderoso: Roteiristas revelam que filme com Jim Carrey teria sequência</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiUGh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy90b2RvLXBvZGVyb3NvLWppbS1jYXJyZXktc2VxdWVuY2lhLXJvdGVpcmlzdGFz0gEA?oc=5\",\n            \"datetime\": \"22/11/2022 às 23:00:00\",\n            \"date\": \"22/11/2022\",\n            \"time\": \"23:00:00\"\n        },\n        {\n            \"title\": \"Animais Fantásticos e novos filmes: Qual é o futuro de Harry Potter?\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiVWh0dHBzOi8vdGFuZ2VyaW5hLnVvbC5jb20uYnIvZW50cmUtcGFnaW5hcy9hbmltYWlzLWZhbnRhc3RpY29zLTQtZnV0dXJvLWhhcnJ5LXBvdHRlci_SAQA?oc=5\\\" target=\\\"_blank\\\">Animais Fantásticos e novos filmes: Qual é o futuro de Harry Potter?</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiVWh0dHBzOi8vdGFuZ2VyaW5hLnVvbC5jb20uYnIvZW50cmUtcGFnaW5hcy9hbmltYWlzLWZhbnRhc3RpY29zLTQtZnV0dXJvLWhhcnJ5LXBvdHRlci_SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 06:30:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"06:30:00\"\n        },\n        {\n            \"title\": \"Babilônia: Margot Robbie diz que o filme é tão louco quanto O Lobo de Wall Street\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiR2h0dHBzOi8vdHJlY29ib3guY29tLmJyL2JhYmlsb25pYS1maWxtZS1lLXRhby1sb3Vjby1xdWFudG8td2FsbC1zdHJlZXQv0gEA?oc=5\\\" target=\\\"_blank\\\">Babilônia: Margot Robbie diz que o filme é tão louco quanto O Lobo de Wall Street</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiR2h0dHBzOi8vdHJlY29ib3guY29tLmJyL2JhYmlsb25pYS1maWxtZS1lLXRhby1sb3Vjby1xdWFudG8td2FsbC1zdHJlZXQv0gEA?oc=5\",\n            \"datetime\": \"24/11/2022 às 21:15:00\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"21:15:00\"\n        },\n        {\n            \"title\": \"Filme da Netflix vai te levar para dentro dele e mudar a sua forma de encarar a vida\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMid2h0dHBzOi8vd3d3LnJldmlzdGFidWxhLmNvbS81NjY4Mi1maWxtZS1kYS1uZXRmbGl4LXZhaS10ZS1sZXZhci1wYXJhLWRlbnRyby1kZWxlLWUtbXVkYXItYS1zdWEtZm9ybWEtZGUtZW5jYXJhci1hLXZpZGEv0gEA?oc=5\\\" target=\\\"_blank\\\">Filme da Netflix vai te levar para dentro dele e mudar a sua forma de encarar a vida</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMid2h0dHBzOi8vd3d3LnJldmlzdGFidWxhLmNvbS81NjY4Mi1maWxtZS1kYS1uZXRmbGl4LXZhaS10ZS1sZXZhci1wYXJhLWRlbnRyby1kZWxlLWUtbXVkYXItYS1zdWEtZm9ybWEtZGUtZW5jYXJhci1hLXZpZGEv0gEA?oc=5\",\n            \"datetime\": \"21/11/2022 às 20:37:25\",\n            \"date\": \"21/11/2022\",\n            \"time\": \"20:37:25\"\n        },\n        {\n            \"title\": \"Atlético-MG na Copa Libertadores 2013 é tema de filme da Faixa de Cinema, da Rede Minas\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMigAFodHRwczovL3d3dy5hZ2VuY2lhbWluYXMubWcuZ292LmJyL2V2ZW50by9hdGxldGljby1tZy1uYS1jb3BhLWxpYmVydGFkb3Jlcy0yMDEzLWUtdGVtYS1kZS1maWxtZS1kYS1mYWl4YS1kZS1jaW5lbWEtZGEtcmVkZS1taW5hc9IBAA?oc=5\\\" target=\\\"_blank\\\">Atlético-MG na Copa Libertadores 2013 é tema de filme da Faixa de Cinema, da Rede Minas</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMigAFodHRwczovL3d3dy5hZ2VuY2lhbWluYXMubWcuZ292LmJyL2V2ZW50by9hdGxldGljby1tZy1uYS1jb3BhLWxpYmVydGFkb3Jlcy0yMDEzLWUtdGVtYS1kZS1maWxtZS1kYS1mYWl4YS1kZS1jaW5lbWEtZGEtcmVkZS1taW5hc9IBAA?oc=5\",\n            \"datetime\": \"24/11/2022 às 10:08:13\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"10:08:13\"\n        },\n        {\n            \"title\": \"Aranhaverso 2: Com técnicas ousadas, filme deve revolucionar universo das animações\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzNjU1L9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzY1NS8?oc=5\\\" target=\\\"_blank\\\">Aranhaverso 2: Com técnicas ousadas, filme deve revolucionar universo das animações</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiP2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9ub3RpY2lhcy9maWxtZXMvbm90aWNpYS0xMDAwMDAzNjU1L9IBQ2h0dHBzOi8vd3d3LmFkb3JvY2luZW1hLmNvbS9hbXAvbm90aWNpYXMvZmlsbWVzL25vdGljaWEtMTAwMDAwMzY1NS8?oc=5\",\n            \"datetime\": \"23/11/2022 às 10:04:00\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"10:04:00\"\n        },\n        {\n            \"title\": \"Atriz de A Usurpadora transforma vida de novela mexicana em filme\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiUWh0dHBzOi8vdGFuZ2VyaW5hLnVvbC5jb20uYnIvZmlsbWVzLXNlcmllcy9nYWJyaWVsYS1zcGFuaWMtZmlsbWUtdmlkYS1lbnRyZXZpc3RhL9IBAA?oc=5\\\" target=\\\"_blank\\\">Atriz de A Usurpadora transforma vida de novela mexicana em filme</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiUWh0dHBzOi8vdGFuZ2VyaW5hLnVvbC5jb20uYnIvZmlsbWVzLXNlcmllcy9nYWJyaWVsYS1zcGFuaWMtZmlsbWUtdmlkYS1lbnRyZXZpc3RhL9IBAA?oc=5\",\n            \"datetime\": \"22/11/2022 às 06:30:00\",\n            \"date\": \"22/11/2022\",\n            \"time\": \"06:30:00\"\n        },\n        {\n            \"title\": \"Filme 'A Acusação' traz uma história sobre o estupro\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMia2h0dHBzOi8vd3d3LmZvbGhhZGVsb25kcmluYS5jb20uYnIvZm9saGEtMi9maWxtZS1hLWFjdXNhY2FvLXRyYXotdW1hLWhpc3RvcmlhLXNvYnJlLW8tZXN0dXByby0zMjI1Mzg3ZS5odG1s0gEA?oc=5\\\" target=\\\"_blank\\\">Filme 'A Acusação' traz uma história sobre o estupro</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMia2h0dHBzOi8vd3d3LmZvbGhhZGVsb25kcmluYS5jb20uYnIvZm9saGEtMi9maWxtZS1hLWFjdXNhY2FvLXRyYXotdW1hLWhpc3RvcmlhLXNvYnJlLW8tZXN0dXByby0zMjI1Mzg3ZS5odG1s0gEA?oc=5\",\n            \"datetime\": \"23/11/2022 às 17:53:49\",\n            \"date\": \"23/11/2022\",\n            \"time\": \"17:53:49\"\n        },\n        {\n            \"title\": \"Conheça o elenco de O Diário de Noel, filme de romance natalino da Netflix\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMibWh0dHBzOi8vdGVtYWxndWVtYXNzaXN0aW5kby5jb20uYnIvY29uaGVjYS1vLWVsZW5jby1kZS1vLWRpYXJpby1kZS1ub2VsLWZpbG1lLWRlLXJvbWFuY2UtbmF0YWxpbm8tZGEtbmV0ZmxpeC_SAQA?oc=5\\\" target=\\\"_blank\\\">Conheça o elenco de O Diário de Noel, filme de romance natalino da Netflix</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMibWh0dHBzOi8vdGVtYWxndWVtYXNzaXN0aW5kby5jb20uYnIvY29uaGVjYS1vLWVsZW5jby1kZS1vLWRpYXJpby1kZS1ub2VsLWZpbG1lLWRlLXJvbWFuY2UtbmF0YWxpbm8tZGEtbmV0ZmxpeC_SAQA?oc=5\",\n            \"datetime\": \"24/11/2022 às 13:00:36\",\n            \"date\": \"24/11/2022\",\n            \"time\": \"13:00:36\"\n        },\n        {\n            \"title\": \"“Argentina, 1985”: Conheça o filme que é sucesso da crítica\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMicmh0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzEwLzI2L2NpbmVtYS1lLXN0cmVhbWluZy9hcmdlbnRpbmEtMTk4NS1jb25oZWNhLW8tZmlsbWUtcXVlLWUtc3VjZXNzby1kYS1jcml0aWNhL9IBAA?oc=5\\\" target=\\\"_blank\\\">“Argentina, 1985”: Conheça o filme que é sucesso da crítica</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMicmh0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzEwLzI2L2NpbmVtYS1lLXN0cmVhbWluZy9hcmdlbnRpbmEtMTk4NS1jb25oZWNhLW8tZmlsbWUtcXVlLWUtc3VjZXNzby1kYS1jcml0aWNhL9IBAA?oc=5\",\n            \"datetime\": \"26/10/2022 às 04:00:00\",\n            \"date\": \"26/10/2022\",\n            \"time\": \"04:00:00\"\n        },\n        {\n            \"title\": \"Halloween: confira filmes temáticos e assustadores para assistir no Dia das Bruxas\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMifmh0dHBzOi8vd3d3LmNubmJyYXNpbC5jb20uYnIvZW50cmV0ZW5pbWVudG8vaGFsbG93ZWVuLWZpbG1lcy10ZW1hdGljb3MtZS1hc3N1c3RhZG9yZXMtcGFyYS1hc3Npc3Rpci1uby1kaWEtZGFzLWJydXhhcy1jb25maXJhL9IBAA?oc=5\\\" target=\\\"_blank\\\">Halloween: confira filmes temáticos e assustadores para assistir no Dia das Bruxas</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMifmh0dHBzOi8vd3d3LmNubmJyYXNpbC5jb20uYnIvZW50cmV0ZW5pbWVudG8vaGFsbG93ZWVuLWZpbG1lcy10ZW1hdGljb3MtZS1hc3N1c3RhZG9yZXMtcGFyYS1hc3Npc3Rpci1uby1kaWEtZGFzLWJydXhhcy1jb25maXJhL9IBAA?oc=5\",\n            \"datetime\": \"31/10/2022 às 04:00:00\",\n            \"date\": \"31/10/2022\",\n            \"time\": \"04:00:00\"\n        },\n        {\n            \"title\": \"Um dos filmes mais esperados e adoráveis de 2022 chegou à Netflix e você ainda não assistiu\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMifmh0dHBzOi8vd3d3LnJldmlzdGFidWxhLmNvbS81NjU0Ny11bS1kb3MtZmlsbWVzLW1haXMtZXNwZXJhZG9zLWUtYWRvcmF2ZWlzLWRlLTIwMjItY2hlZ291LWEtbmV0ZmxpeC1lLXZvY2UtYWluZGEtbmFvLWFzc2lzdGl1L9IBAA?oc=5\\\" target=\\\"_blank\\\">Um dos filmes mais esperados e adoráveis de 2022 chegou à Netflix e você ainda não assistiu</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMifmh0dHBzOi8vd3d3LnJldmlzdGFidWxhLmNvbS81NjU0Ny11bS1kb3MtZmlsbWVzLW1haXMtZXNwZXJhZG9zLWUtYWRvcmF2ZWlzLWRlLTIwMjItY2hlZ291LWEtbmV0ZmxpeC1lLXZvY2UtYWluZGEtbmFvLWFzc2lzdGl1L9IBAA?oc=5\",\n            \"datetime\": \"19/11/2022 às 15:09:00\",\n            \"date\": \"19/11/2022\",\n            \"time\": \"15:09:00\"\n        },\n        {\n            \"title\": \"Agonizante, filme da Netflix tem 100% de avaliações positivas e é um dos mais brutais e perturbadores de 2022\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMijgFodHRwczovL3d3dy5yZXZpc3RhYnVsYS5jb20vNTY2OTYtYWdvbml6YW50ZS1maWxtZS1kYS1uZXRmbGl4LXRlbS0xMDAtZGUtYXZhbGlhY29lcy1wb3NpdGl2YXMtZS1lLXVtLWRvcy1tYWlzLWJydXRhaXMtZS1wZXJ0dXJiYWRvcmVzLWRlLTIwMjIv0gEA?oc=5\\\" target=\\\"_blank\\\">Agonizante, filme da Netflix tem 100% de avaliações positivas e é um dos mais brutais e perturbadores de 2022</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMijgFodHRwczovL3d3dy5yZXZpc3RhYnVsYS5jb20vNTY2OTYtYWdvbml6YW50ZS1maWxtZS1kYS1uZXRmbGl4LXRlbS0xMDAtZGUtYXZhbGlhY29lcy1wb3NpdGl2YXMtZS1lLXVtLWRvcy1tYWlzLWJydXRhaXMtZS1wZXJ0dXJiYWRvcmVzLWRlLTIwMjIv0gEA?oc=5\",\n            \"datetime\": \"22/11/2022 às 19:46:36\",\n            \"date\": \"22/11/2022\",\n            \"time\": \"19:46:36\"\n        },\n        {\n            \"title\": \"Esse é o MELHOR FILME DE MORGAN FREEMAN e você precisa assistir\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiW2h0dHBzOi8vc3RyZWFtaW5nc2JyYXNpbC5jb20vZXNzZS1lLW8tbWVsaG9yLWZpbG1lLWRlLW1vcmdhbi1mcmVlbWFuLXVtLXNvbmhvLWRlLWxpYmVyZGFkZS_SAQA?oc=5\\\" target=\\\"_blank\\\">Esse é o MELHOR FILME DE MORGAN FREEMAN e você precisa assistir</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiW2h0dHBzOi8vc3RyZWFtaW5nc2JyYXNpbC5jb20vZXNzZS1lLW8tbWVsaG9yLWZpbG1lLWRlLW1vcmdhbi1mcmVlbWFuLXVtLXNvbmhvLWRlLWxpYmVyZGFkZS_SAQA?oc=5\",\n            \"datetime\": \"18/11/2022 às 12:04:21\",\n            \"date\": \"18/11/2022\",\n            \"time\": \"12:04:21\"\n        },\n        {\n            \"title\": \"Blade | Filme com Mahershala Ali encontra diretor e roteirista\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiQWh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL21hcnZlbC1jaW5lbWEvYmxhZGUtZGlyZXRvci1yb3RlaXJpc3Rh0gEA?oc=5\\\" target=\\\"_blank\\\">Blade | Filme com Mahershala Ali encontra diretor e roteirista</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiQWh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL21hcnZlbC1jaW5lbWEvYmxhZGUtZGlyZXRvci1yb3RlaXJpc3Rh0gEA?oc=5\",\n            \"datetime\": \"21/11/2022 às 18:44:00\",\n            \"date\": \"21/11/2022\",\n            \"time\": \"18:44:00\"\n        },\n        {\n            \"title\": \"Outcome: Keanu Reeves irá estrelar filme de Jonah Hill\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiQWh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy9vdXRjb21lLWtlYW51LXJlZXZlcy1qb2hhbi1oaWxs0gEA?oc=5\\\" target=\\\"_blank\\\">Outcome: Keanu Reeves irá estrelar filme de Jonah Hill</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiQWh0dHBzOi8vd3d3Lm9tZWxldGUuY29tLmJyL2ZpbG1lcy9vdXRjb21lLWtlYW51LXJlZXZlcy1qb2hhbi1oaWxs0gEA?oc=5\",\n            \"datetime\": \"16/11/2022 às 05:00:00\",\n            \"date\": \"16/11/2022\",\n            \"time\": \"05:00:00\"\n        },\n        {\n            \"title\": \"Filme mais assistido da Netflix hoje é inspirado em história real?\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMifGh0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzEwLzI2L2NpbmVtYS1lLXN0cmVhbWluZy9maWxtZS1tYWlzLWFzc2lzdGlkby1kYS1uZXRmbGl4LWhvamUtZS1pbnNwaXJhZG8tZW0taGlzdG9yaWEtcmVhbC_SAQA?oc=5\\\" target=\\\"_blank\\\">Filme mais assistido da Netflix hoje é inspirado em história real?</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMifGh0dHBzOi8vb2xoYXJkaWdpdGFsLmNvbS5ici8yMDIyLzEwLzI2L2NpbmVtYS1lLXN0cmVhbWluZy9maWxtZS1tYWlzLWFzc2lzdGlkby1kYS1uZXRmbGl4LWhvamUtZS1pbnNwaXJhZG8tZW0taGlzdG9yaWEtcmVhbC_SAQA?oc=5\",\n            \"datetime\": \"26/10/2022 às 04:00:00\",\n            \"date\": \"26/10/2022\",\n            \"time\": \"04:00:00\"\n        },\n        {\n            \"title\": \"Novo filme com Timothée Chalamet, “Até Os Ossos” ganha trailer\",\n            \"description\": \"<a href=\\\"https://news.google.com/__i/rss/rd/articles/CBMiaGh0dHBzOi8vd3d3LmNubmJyYXNpbC5jb20uYnIvZW50cmV0ZW5pbWVudG8vbm92by1maWxtZS1jb20tdGltb3RoZWUtY2hhbGFtZXQtYXRlLW9zLW9zc29zLWdhbmhhLXRyYWlsZXIv0gEA?oc=5\\\" target=\\\"_blank\\\">Novo filme com Timothée Chalamet, “Até Os Ossos” ganha trailer</a>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiaGh0dHBzOi8vd3d3LmNubmJyYXNpbC5jb20uYnIvZW50cmV0ZW5pbWVudG8vbm92by1maWxtZS1jb20tdGltb3RoZWUtY2hhbGFtZXQtYXRlLW9zLW9zc29zLWdhbmhhLXRyYWlsZXIv0gEA?oc=5\",\n            \"datetime\": \"26/10/2022 às 04:00:00\",\n            \"date\": \"26/10/2022\",\n            \"time\": \"04:00:00\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "403 - Perfil com admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/noticias/hoje/?q=Filme",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"noticias",
+										"hoje",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Filme"
+										},
+										{
+											"key": "date",
+											"value": "11/11/2022",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T00:31:47.415+00:00\",\n    \"message\": \"Consulta de notícias só pode ser realizada por perfil sem administrador.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						},
+						{
+							"name": "404 - Usuário sem etiqueta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/noticias/hoje/?q=Filme",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"noticias",
+										"hoje",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Filme"
+										},
+										{
+											"key": "date",
+											"value": "11/11/2022",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T00:33:21.864+00:00\",\n    \"message\": \"Etiqueta não encontrada no cadastro de etiquetas vinculadas ao usuário.\",\n    \"status\": \"NOT_FOUND\"\n}"
+						},
+						{
+							"name": "403 - Token inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/noticias/hoje/?q=Filme",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"noticias",
+										"hoje",
+										""
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Filme"
+										},
+										{
+											"key": "date",
+											"value": "11/11/2022",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:21:04.394+00:00\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"message\": \"Access Denied\",\n    \"path\": \"/v1/usuarios/noticias/hoje/\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Administrador",
+			"item": [
+				{
+					"name": "Criar usuário/admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY5MzQzOTc1fQ.Sjf5JIPURFH-cB7N7WvlQdQppjlowP2nIXaAjFgaB_4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Thalia\",\r\n    \"email\": \"t@teste.com\",\r\n    \"senha\": \"1234\",\r\n    \"perfilId\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/cadastrar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"cadastrar"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso - criar usuário",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Thalia\",\r\n    \"email\": \"thalia@usuario\",\r\n    \"senha\": \"12345\",\r\n    \"perfilId\": \"2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": null,
+							"cookie": [],
+							"body": "Usuário cadastrado com sucesso!"
+						},
+						{
+							"name": "200 - Sucesso - criar administrador",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Thalia\",\r\n    \"email\": \"thalia@administrador\",\r\n    \"senha\": \"@1jh78$\",\r\n    \"perfilId\": \"1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": null,
+							"cookie": [],
+							"body": "Usuário cadastrado com sucesso!"
+						},
+						{
+							"name": "208 - E-mail existente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"nome\": \"Thalia\",\r\n    \"email\": \"taly@gft.com\",\r\n    \"senha\": \"12343\",\r\n    \"perfilId\": \"2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"status": "Already Reported (WebDAV) (RFC 5842)",
+							"code": 208,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:01:14.679+00:00\",\n    \"message\": \"E-mail não está disponível. Insira um diferente.\",\n    \"status\": \"ALREADY_REPORTED\"\n}"
+						},
+						{
+							"name": "400 - Sem nome informado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"t@teste.com\",\r\n    \"senha\": \"1234\",\r\n    \"perfilId\": \"1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:05:41.759+00:00\",\n    \"message\": \"nome deve ser informado!\",\n    \"status\": \"BAD_REQUEST\"\n}"
+						},
+						{
+							"name": "400 - Sem e-mail informado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"nome\": \"Thalia\",\r\n    \"senha\": \"1234\",\r\n    \"perfilId\": \"2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:04:44.898+00:00\",\n    \"message\": \"email deve ser informado!\",\n    \"status\": \"BAD_REQUEST\"\n}"
+						},
+						{
+							"name": "400 - Sem senha informada",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Thalia\",\r\n    \"email\": \"t@teste.com\",\r\n    \"perfilId\": \"1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:07:35.304+00:00\",\n    \"message\": \"senha deve ser informada!\",\n    \"status\": \"BAD_REQUEST\"\n}"
+						},
+						{
+							"name": "400 - Sem perfil informado",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Thalia\",\r\n    \"email\": \"t@teste.com\",\r\n    \"senha\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:08:15.414+00:00\",\n    \"message\": \"perfilId' deve ser informado!\",\n    \"status\": \"BAD_REQUEST\"\n}"
+						},
+						{
+							"name": "403 - Perfil sem admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"nome\": \"Thalia\",\r\n    \"email\": \"taly@gft.com\",\r\n    \"senha\": \"1233\",\r\n    \"perfilId\": \"2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T00:57:55.981+00:00\",\n    \"message\": \"Cadastro de usuários só pode ser realizado por perfil administrador.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						},
+						{
+							"name": "403 - Token inválido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Thalia\",\r\n    \"email\": \"thalia@usuario\",\r\n    \"senha\": \"12345\",\r\n    \"perfilId\": \"2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/cadastrar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"cadastrar"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:23:16.543+00:00\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"message\": \"Access Denied\",\n    \"path\": \"/v1/usuarios/cadastrar\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Enviar notícias por email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY5MTYyOTkzfQ.W0ii8pleTJATJHWyVQn6PkodjTtbXFYu5KHmX3FJ_5M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/email-send",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"email-send"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/email-send",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"email-send"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "E-mail de notícias enviado com sucesso!"
+						},
+						{
+							"name": "403 - Perfil sem admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/email-send",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"email-send"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:11:30.525+00:00\",\n    \"message\": \"Envio de e-mails de notícias só pode ser realizado por perfil administrador.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						},
+						{
+							"name": "403 - Token inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/email-send",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"email-send"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:25:39.753+00:00\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"message\": \"Access Denied\",\n    \"path\": \"/v1/usuarios/email-send\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Listar usuários",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY5MzQ1OTgyfQ.1iRRL76Jlzunnvllg8xZJ18ZBq4ZnA6FE6xUWKWZLhc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/listar?perfil=usuario",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"listar"
+							],
+							"query": [
+								{
+									"key": "perfil",
+									"value": "usuario"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso - todos os usuários",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/listar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"listar"
+									],
+									"query": [
+										{
+											"key": "perfil",
+											"value": "Usuario",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"nome\": \"Admin\",\n        \"email\": \"admin@teste\",\n        \"perfil\": \"Admin\"\n    },\n    {\n        \"nome\": \"Guilherme\",\n        \"email\": \"guilherme@teste\",\n        \"perfil\": \"Admin\"\n    },\n    {\n        \"nome\": \"Samara\",\n        \"email\": \"samara@teste\",\n        \"perfil\": \"Usuario\"\n    },\n    {\n        \"nome\": \"Leandro\",\n        \"email\": \"leandro@teste\",\n        \"perfil\": \"Usuario\"\n    },\n    {\n        \"nome\": \"Thalia\",\n        \"email\": \"taly@gft.com\",\n        \"perfil\": \"Usuario\"\n    },\n    {\n        \"nome\": \"Thalia\",\n        \"email\": \"tay@teste.com\",\n        \"perfil\": \"Admin\"\n    }\n]"
+						},
+						{
+							"name": "200 - Sucesso - perfil Usuario",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/listar?perfil=Usuario",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"listar"
+									],
+									"query": [
+										{
+											"key": "perfil",
+											"value": "Usuario"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"nome\": \"Samara\",\n        \"email\": \"samara@teste\",\n        \"perfil\": \"Usuario\"\n    },\n    {\n        \"nome\": \"Leandro\",\n        \"email\": \"leandro@teste\",\n        \"perfil\": \"Usuario\"\n    },\n    {\n        \"nome\": \"Thalia\",\n        \"email\": \"taly@gft.com\",\n        \"perfil\": \"Usuario\"\n    }\n]"
+						},
+						{
+							"name": "200 - Sucesso - perfil Admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/listar?perfil=Admin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"listar"
+									],
+									"query": [
+										{
+											"key": "perfil",
+											"value": "Admin"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"nome\": \"Admin\",\n        \"email\": \"admin@teste\",\n        \"perfil\": \"Admin\"\n    },\n    {\n        \"nome\": \"Guilherme\",\n        \"email\": \"guilherme@teste\",\n        \"perfil\": \"Admin\"\n    },\n    {\n        \"nome\": \"Thalia\",\n        \"email\": \"tay@teste.com\",\n        \"perfil\": \"Admin\"\n    }\n]"
+						},
+						{
+							"name": "400 - Parâmetro inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/listar?perfil=Usuari",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"listar"
+									],
+									"query": [
+										{
+											"key": "perfil",
+											"value": "Usuari"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:38:29.917+00:00\",\n    \"message\": \"Perfil inexistente.\",\n    \"status\": \"BAD_REQUEST\"\n}"
+						},
+						{
+							"name": "403 - Perfil sem admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/listar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"listar"
+									],
+									"query": [
+										{
+											"key": "perfil",
+											"value": "Usuario",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:13:49.147+00:00\",\n    \"message\": \"Consulta de usuários só pode ser realizada por perfil administrador.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						},
+						{
+							"name": "403 - Token inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/listar",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"listar"
+									],
+									"query": [
+										{
+											"key": "perfil",
+											"value": "Usuario",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:26:32.037+00:00\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"message\": \"Access Denied\",\n    \"path\": \"/v1/usuarios/listar\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Histórico",
+			"item": [
+				{
+					"name": "Etiquetas mais acessadas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY5MzQzNDQ1fQ.Fzgp5VBhwonN8tswGx09XbL9uYm-DFjJgQMEd2PE4Ys",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/etiquetas-mais-acessadas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"etiquetas-mais-acessadas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/etiquetas-mais-acessadas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"etiquetas-mais-acessadas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"nomeEtiqueta\": \"tecnologia\",\n        \"quantidadeOcorrencias\": 3\n    },\n    {\n        \"nomeEtiqueta\": \"teatro\",\n        \"quantidadeOcorrencias\": 2\n    },\n    {\n        \"nomeEtiqueta\": \"filme\",\n        \"quantidadeOcorrencias\": 1\n    },\n    {\n        \"nomeEtiqueta\": \"musica\",\n        \"quantidadeOcorrencias\": 1\n    }\n]"
+						},
+						{
+							"name": "403 - Perfil sem admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/etiquetas-mais-acessadas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"etiquetas-mais-acessadas"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T00:50:54.956+00:00\",\n    \"message\": \"Histórico de etiquetas mais acessadas só pode ser visualizado por perfil administrador.\",\n    \"status\": \"FORBIDDEN\"\n}"
+						},
+						{
+							"name": "403 - Token inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/etiquetas-mais-acessadas",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"etiquetas-mais-acessadas"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:22:00.171+00:00\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"message\": \"Access Denied\",\n    \"path\": \"/v1/usuarios/etiquetas-mais-acessadas\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Histórico parâmetros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiUHJvZ3JhbWFTVEFSVEVSIiwiZXhwIjoxNjY5MDY0Nzc1fQ.EAarLR3YXuTZat2sFTYPajbvISPsjpFBY5JjC99cTLE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/parametros-acessados",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"usuarios",
+								"parametros-acessados"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - Sucesso - usuário",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/parametros-acessados",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"parametros-acessados"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 7,\n        \"etiqueta\": \"filme\",\n        \"data\": \"24/11/2022\",\n        \"idUsuario\": 3\n    }\n]"
+						},
+						{
+							"name": "200 - Sucesso - admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/parametros-acessados",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"parametros-acessados"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 7,\n        \"etiqueta\": \"filme\",\n        \"data\": \"24/11/2022\",\n        \"idUsuario\": 3\n    },\n    {\n        \"id\": 9,\n        \"etiqueta\": \"tecnologia\",\n        \"data\": \"24/11/2022\",\n        \"idUsuario\": 4\n    },\n    {\n        \"id\": 10,\n        \"etiqueta\": \"tecnologia\",\n        \"data\": \"24/11/2022\",\n        \"idUsuario\": 4\n    },\n    {\n        \"id\": 11,\n        \"etiqueta\": \"tecnologia\",\n        \"data\": \"24/11/2022\",\n        \"idUsuario\": 4\n    }\n]"
+						},
+						{
+							"name": "403 - Token inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/usuarios/parametros-acessados",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"usuarios",
+										"parametros-acessados"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2022-11-25T01:22:34.959+00:00\",\n    \"status\": 403,\n    \"error\": \"Forbidden\",\n    \"message\": \"Access Denied\",\n    \"path\": \"/v1/usuarios/parametros-acessados\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
